@@ -41,7 +41,16 @@ public class DashController : MonoBehaviour
     public int temp = 0;
 
     //reactor stuff
-    //Random
+    public GameObject reactor;
+    private SpriteRenderer reactorSR;
+    public Sprite state0;
+    public Sprite state1;
+    public Sprite state2;
+    public Sprite state3;
+    public Sprite state4;
+    public Sprite state5;
+    private List<Sprite> states = new List<Sprite>();
+    public int state = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +66,13 @@ public class DashController : MonoBehaviour
         nums.Add(num8);
         nums.Add(num9);
 
+        states.Add(state0);
+        states.Add(state1);
+        states.Add(state2);
+        states.Add(state3);
+        states.Add(state4);
+        states.Add(state5);
+
         //clock
         CD1 = ClockDigit1.GetComponent<SpriteRenderer>();
         CD2 = ClockDigit2.GetComponent<SpriteRenderer>();
@@ -68,7 +84,8 @@ public class DashController : MonoBehaviour
         TD1 = TempDigit1.GetComponent<SpriteRenderer>();
         TD2 = TempDigit2.GetComponent<SpriteRenderer>();
         TD3 = TempDigit3.GetComponent<SpriteRenderer>();
-        //final inits
+
+        reactorSR = reactor.GetComponent<SpriteRenderer>();
     }
 
 
@@ -76,6 +93,16 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            state += 1;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            state -= 1;
+
+        if (state < 0)
+            state = 0;
+        if (state > 5)
+            state = 5;
+
         CD1.sprite = nums[Mathf.RoundToInt(time / 10)];
         CD2.sprite = nums[time % 10];
 
@@ -89,6 +116,8 @@ public class DashController : MonoBehaviour
         TD1.sprite = nums[Mathf.RoundToInt(temp / 100)];
         TD2.sprite = nums[Mathf.RoundToInt((temp % 100) / 10)];
         TD3.sprite = nums[temp % 10];
+
+        reactorSR.sprite = states[state];
 
         //yeetus
     }
