@@ -189,6 +189,20 @@ public class DashController : MonoBehaviour
             dayend();
         }
 
+        if (temp > 470)
+            state = 4;
+        else if (temp > 400)
+            state = 3;
+        else if (temp > 250)
+            state = 2;
+        else if (radiation > 225)
+            state = 5;
+        else if (radiation > 100)
+            state = 1;
+        else
+            state = 0;
+        
+
         if (money > MaxMoney)
             money = MaxMoney;
 
