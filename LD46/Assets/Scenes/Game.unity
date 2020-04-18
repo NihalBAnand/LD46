@@ -245,6 +245,10 @@ MonoBehaviour:
   TempDigit2: {fileID: 1988275992}
   TempDigit3: {fileID: 646272364}
   temp: 0
+  KwDigit1: {fileID: 1897812284}
+  KwDigit2: {fileID: 407925626}
+  KwDigit3: {fileID: 486718632}
+  KwH: 0
   reactor: {fileID: 922373356}
   state0: {fileID: 21300000, guid: fe46b33970f8ce9408170a722aa40cca, type: 3}
   state1: {fileID: 21300000, guid: 7fc105c8ee33c69469ca297357313dfb, type: 3}
