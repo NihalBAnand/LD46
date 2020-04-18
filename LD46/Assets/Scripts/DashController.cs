@@ -86,22 +86,22 @@ public class DashController : MonoBehaviour
         CD1 = ClockDigit1.GetComponent<SpriteRenderer>();
         CD2 = ClockDigit2.GetComponent<SpriteRenderer>();
 
+        //money
         MD1 = MoneyDigit1.GetComponent<SpriteRenderer>();
         MD2 = MoneyDigit2.GetComponent<SpriteRenderer>();
         MD3 = MoneyDigit3.GetComponent<SpriteRenderer>();
 
+        //temperature
         TD1 = TempDigit1.GetComponent<SpriteRenderer>();
         TD2 = TempDigit2.GetComponent<SpriteRenderer>();
         TD3 = TempDigit3.GetComponent<SpriteRenderer>();
 
+        //kilowatt-hours
         Kw1 = KwDigit1.GetComponent<SpriteRenderer>();
         Kw2 = KwDigit2.GetComponent<SpriteRenderer>();
         Kw3 = KwDigit3.GetComponent<SpriteRenderer>();
 
-        //final inits
-
-        
-
+        //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
     }
 
