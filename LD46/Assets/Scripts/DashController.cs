@@ -12,22 +12,25 @@ public class DashController : MonoBehaviour
 
     //Stats
     public int money = 0;
+    public double percentDecrease = 2.15;
     public int percent = 0;
-    public int maxrads = 250;
+    public int maxRads = 250;
     public int radiation = 0;
     public int temp = 0;
     public int population = 100;
     public int popIncRate = 10;
     public int popIncFreq = 3;
     public int dailyPowerUse;
-    public int waterlevel = 100;
-    public int controlrods = 6;
-    public int rodInUse = 0;
+    public int waterLevel = 100;
+    public int MaxWater = 100;
+    public int controlRods = 6;
+    public int rodInUse = 6;
     public int excessStorage = 0;
     public int priceOfPower = 1;
     public int storageCapacity = 300;
     public int strike = 0;
     public int powerGain = 0;
+    public int efficiency = 1;
 
 
     //flow control
@@ -229,7 +232,7 @@ public class DashController : MonoBehaviour
             population += popIncRate;
             dailyPowerUse = population * 24;
         }
-        waterlevel = 100;
+        waterLevel = MaxWater;
         dailyPowerUse = population * 24;
         time = 0;
         day += 1;
@@ -266,15 +269,24 @@ public class DashController : MonoBehaviour
         yield return new WaitForSeconds(HourLength);
         if (!paused)
         {
-            time++;
-            evaporate();
+            endHour();
         }
 
         StartCoroutine(Hour());
     }
 
-    private void evaporate()
+    private void endHour()
     {
-        
+        time++;
+        efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
+        percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
+        if (temp - 100>=0)
+        {
+            waterLevel -= Mathf.RoundToInt((temp - 100) / 10);
+            powerGain = (temp - 100) * 3;
+            powerGain *= efficiency;
+        }
+        KwH += powerGain;
+
     }
 }
