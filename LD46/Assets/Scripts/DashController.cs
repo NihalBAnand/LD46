@@ -32,6 +32,14 @@ public class DashController : MonoBehaviour
     private SpriteRenderer MD3;
     public int money = 0;
 
+    public GameObject TempDigit1;
+    public GameObject TempDigit2;
+    public GameObject TempDigit3;
+    private SpriteRenderer TD1;
+    private SpriteRenderer TD2;
+    private SpriteRenderer TD3;
+    public int temp = 0;
+
 
 
     // Start is called before the first frame update
@@ -54,6 +62,10 @@ public class DashController : MonoBehaviour
         MD1 = MoneyDigit1.GetComponent<SpriteRenderer>();
         MD2 = MoneyDigit2.GetComponent<SpriteRenderer>();
         MD3 = MoneyDigit3.GetComponent<SpriteRenderer>();
+
+        TD1 = TempDigit1.GetComponent<SpriteRenderer>();
+        TD2 = TempDigit2.GetComponent<SpriteRenderer>();
+        TD3 = TempDigit3.GetComponent<SpriteRenderer>();
     }
 
 
@@ -70,5 +82,9 @@ public class DashController : MonoBehaviour
         MD1.sprite = nums[Mathf.RoundToInt(money / 100)];
         MD2.sprite = nums[Mathf.RoundToInt((money % 100) / 10)];
         MD3.sprite = nums[money % 10];
+
+        TD1.sprite = nums[Mathf.RoundToInt(temp / 100)];
+        TD2.sprite = nums[Mathf.RoundToInt((temp % 100) / 10)];
+        TD3.sprite = nums[temp % 10];
     }
 }

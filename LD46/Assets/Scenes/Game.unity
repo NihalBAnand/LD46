@@ -241,6 +241,10 @@ MonoBehaviour:
   MoneyDigit2: {fileID: 221705980}
   MoneyDigit3: {fileID: 1433363357}
   money: 0
+  TempDigit1: {fileID: 1102627352}
+  TempDigit2: {fileID: 1988275992}
+  TempDigit3: {fileID: 646272364}
+  temp: 0
 --- !u!1 &58180366
 GameObject:
   m_ObjectHideFlags: 0
