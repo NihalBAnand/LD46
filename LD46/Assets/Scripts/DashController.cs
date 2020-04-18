@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,26 @@ public class DashController : MonoBehaviour
     //constants for no hardcoding lol
     private const float HourLength = 3f; // CHANGE TO 30 FOR FINAL DEPLOY
     private const int MaxMoney = 999;
+
+    //Stats
+    public int money = 0;
+    public int percent = 0;
+    public int radiation = 0;
+    public int temp = 0;
+    public int population = 100;
+    public int popIncRate = 10;
+    public int popIncFreq = 3;
+    public int dailyPowerUse;
+    public int waterlevel = 100;
+    public int controlrods = 6;
+    public int rodInUse = 0;
+    public int excessstorage = 0;
+    public int priceOfPower = 1;
+    public int storagecapcity = 300;
+    public int strike = 0;
+ 
+
+
 
     //Number sprites for digits
     public Sprite num0;
@@ -37,7 +58,6 @@ public class DashController : MonoBehaviour
     private SpriteRenderer MD1;
     private SpriteRenderer MD2;
     private SpriteRenderer MD3;
-    public int money = 0;
 
     //Temperature Sprites
     public GameObject TempDigit1;
@@ -46,7 +66,6 @@ public class DashController : MonoBehaviour
     private SpriteRenderer TD1;
     private SpriteRenderer TD2;
     private SpriteRenderer TD3;
-    public int temp = 0;
 
     //Kilowatt-Hours Sprites
     public GameObject KwDigit1;
@@ -64,7 +83,6 @@ public class DashController : MonoBehaviour
     private SpriteRenderer PD1;
     private SpriteRenderer PD2;
     private SpriteRenderer PD3;
-    public int percent = 0;
 
     //Reactor Sprites
     public GameObject reactor;
@@ -130,6 +148,8 @@ public class DashController : MonoBehaviour
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
 
+        dailyPowerUse = population * 24;
+
         //End UI inits -->
 
         //DO LAST NO MATTER WHAT
@@ -156,8 +176,7 @@ public class DashController : MonoBehaviour
 
         if (time >= 24)
         {
-            day += 1;
-            time = 0;
+            dayend();
         }
 
         if (money > MaxMoney)
@@ -196,6 +215,41 @@ public class DashController : MonoBehaviour
         PD3.sprite = nums[percent % 10];
 
         //End UI display logic -->
+    }
+
+    private void dayend()
+    {
+        day += 1;
+        time = 0;
+        waterlevel = 100;
+        if (day % popIncFreq == 0)
+        {
+            population += popIncRate;
+            dailyPowerUse = population * 24;
+        }
+        moneyfrompower();
+    }
+
+    private void moneyfrompower()
+    {
+        if(dailyPowerUse<KwH)
+        {
+            excessstorage += (KwH - dailyPowerUse);
+            if (excessstorage > storagecapcity)
+            {
+                excessstorage = storagecapcity;
+                money += (priceOfPower) * (dailyPowerUse);
+            }
+        }
+        else if(dailyPowerUse>KwH)
+        {
+            strike += 1;
+            money += (priceOfPower + 10) * (KwH);
+        }
+        else
+        {
+            money += (priceOfPower) * (KwH);
+        }
     }
 
     IEnumerator Hour() 
