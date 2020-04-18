@@ -57,6 +57,7 @@ public class DashController : MonoBehaviour
         nums.Add(num8);
         nums.Add(num9);
 
+        //clock
         CD1 = ClockDigit1.GetComponent<SpriteRenderer>();
         CD2 = ClockDigit2.GetComponent<SpriteRenderer>();
 
