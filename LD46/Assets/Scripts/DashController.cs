@@ -41,6 +41,7 @@ public class DashController : MonoBehaviour
     public int temp = 0;
 
     //reactor stuff
+    //Random
 
     // Start is called before the first frame update
     void Start()
