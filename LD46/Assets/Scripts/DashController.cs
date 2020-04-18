@@ -245,6 +245,7 @@ public class DashController : MonoBehaviour
                 excessstorage = storagecapcity;
                 money += (priceOfPower) * (dailyPowerUse);
             }
+            money += 10;
         }
         else if(dailyPowerUse>KwH)
         {
@@ -254,6 +255,7 @@ public class DashController : MonoBehaviour
         else
         {
             money += (priceOfPower) * (KwH);
+            money += 10;
         }
     }
 
