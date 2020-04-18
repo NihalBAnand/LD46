@@ -32,8 +32,10 @@ public class DashController : MonoBehaviour
     public int powerGain = 0;
     public int efficiency = 1;
 
+
     //flush
     public int flushState = 0; // 0-3
+
 
     //flow control
     public bool paused = false;
@@ -287,6 +289,7 @@ public class DashController : MonoBehaviour
     {
         time++;
 
+
         if (flushState == 1)
         {
             radiation = 0;
@@ -315,6 +318,10 @@ public class DashController : MonoBehaviour
             if (percent < 0) percent = 0;
             flushState = 0;
         }
+
+
+        efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
+        percent = Mathf.RoundToInt((float)Math.Pow(percentDecrease,(controlRods - rodInUse)));
 
         if (temp - 100>=0)
         {
