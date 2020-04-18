@@ -49,6 +49,14 @@ public class DashController : MonoBehaviour
     private SpriteRenderer Kw3;
     public int KwH = 0;
 
+    public GameObject PercentDigit1;
+    public GameObject PercentDigit2;
+    public GameObject PercentDigit3;
+    private SpriteRenderer PD1;
+    private SpriteRenderer PD2;
+    private SpriteRenderer PD3;
+    public int percent = 0;
+
     //reactor stuff
     public GameObject reactor;
     private SpriteRenderer reactorSR;
@@ -101,6 +109,11 @@ public class DashController : MonoBehaviour
         Kw2 = KwDigit2.GetComponent<SpriteRenderer>();
         Kw3 = KwDigit3.GetComponent<SpriteRenderer>();
 
+        //percent
+        PD1 = PercentDigit1.GetComponent<SpriteRenderer>();
+        PD2 = PercentDigit2.GetComponent<SpriteRenderer>();
+        PD3 = PercentDigit3.GetComponent<SpriteRenderer>();
+
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
     }
@@ -126,6 +139,8 @@ public class DashController : MonoBehaviour
         if (money > 999)
             money = 999;
 
+        if (percent > 100)
+            percent = 100;
 
         MD1.sprite = nums[Mathf.RoundToInt(money / 100)];
         MD2.sprite = nums[Mathf.RoundToInt((money % 100) / 10)];
@@ -135,10 +150,13 @@ public class DashController : MonoBehaviour
         TD2.sprite = nums[Mathf.RoundToInt((temp % 100) / 10)];
         TD3.sprite = nums[temp % 10];
 
-
         Kw1.sprite = nums[Mathf.RoundToInt(KwH / 100)];
         Kw2.sprite = nums[Mathf.RoundToInt((KwH % 100) / 10)];
         Kw3.sprite = nums[KwH % 10];
+
+        PD1.sprite = nums[Mathf.RoundToInt(percent / 100)];
+        PD2.sprite = nums[Mathf.RoundToInt((percent % 100) / 10)];
+        PD3.sprite = nums[percent % 10];
 
         reactorSR.sprite = states[state];
 
