@@ -23,10 +23,11 @@ public class DashController : MonoBehaviour
     public int waterlevel = 100;
     public int controlrods = 6;
     public int rodInUse = 0;
-    public int excessstorage = 0;
+    public int excessStorage = 0;
     public int priceOfPower = 1;
-    public int storagecapcity = 300;
+    public int storageCapacity = 300;
     public int strike = 0;
+    public int powerGain = 0;
 
 
     //flow control
@@ -239,10 +240,10 @@ public class DashController : MonoBehaviour
     {
         if(dailyPowerUse<KwH)
         {
-            excessstorage += (KwH - dailyPowerUse);
-            if (excessstorage > storagecapcity)
+            excessStorage += (KwH - dailyPowerUse);
+            if (excessStorage > storageCapacity)
             {
-                excessstorage = storagecapcity;
+                excessStorage = storageCapacity;
                 money += (priceOfPower) * (dailyPowerUse);
             }
         }
@@ -262,7 +263,11 @@ public class DashController : MonoBehaviour
         //Every hour logic
         yield return new WaitForSeconds(HourLength);
         if (!paused)
+        {
             time++;
+            evaporate();
+        }
+
         StartCoroutine(Hour());
     }
 }
