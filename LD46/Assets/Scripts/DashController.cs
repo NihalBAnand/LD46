@@ -164,26 +164,36 @@ public class DashController : MonoBehaviour
         if (percent > 100)
             percent = 100;
 
+        //<-- Start UI display logic
+
+        //clock
         CD1.sprite = nums[Mathf.RoundToInt(time / 10)];
         CD2.sprite = nums[time % 10];
 
+        //reactor
         reactorSR.sprite = states[state];
 
+        //money
         MD1.sprite = nums[Mathf.RoundToInt(money / 100)];
         MD2.sprite = nums[Mathf.RoundToInt((money % 100) / 10)];
         MD3.sprite = nums[money % 10];
 
+        //temperature
         TD1.sprite = nums[Mathf.RoundToInt(temp / 100)];
         TD2.sprite = nums[Mathf.RoundToInt((temp % 100) / 10)];
         TD3.sprite = nums[temp % 10];
 
+        //kilowatt-hours
         Kw1.sprite = nums[Mathf.RoundToInt(KwH / 100)];
         Kw2.sprite = nums[Mathf.RoundToInt((KwH % 100) / 10)];
         Kw3.sprite = nums[KwH % 10];
 
+        //percent
         PD1.sprite = nums[Mathf.RoundToInt(percent / 100)];
         PD2.sprite = nums[Mathf.RoundToInt((percent % 100) / 10)];
         PD3.sprite = nums[percent % 10];
+
+        //End UI display logic -->
     }
 
     IEnumerator Hour() 
