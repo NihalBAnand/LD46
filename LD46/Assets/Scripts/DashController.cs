@@ -28,6 +28,7 @@ public class DashController : MonoBehaviour
     private SpriteRenderer CD1;
     private SpriteRenderer CD2;
     public int time = 0;
+    public int day = 0;
 
     //Money Sprites
     public GameObject MoneyDigit1;
@@ -154,6 +155,7 @@ public class DashController : MonoBehaviour
         //End reactor debug -->
 
         if (time >= 24)
+            day += 1;
             time = 0;
 
         if (money > MaxMoney)
