@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class DashController : MonoBehaviour
 {
+    //constants for no hardcoding lmao
     private const float HourLength = 3f; // CHANGE TO 30 FOR FINAL DEPLOY
+    private const int MaxMoney = 999;
 
+    //Number sprites for digits
     public Sprite num0;
     public Sprite num1;
     public Sprite num2;
@@ -19,13 +22,14 @@ public class DashController : MonoBehaviour
     public Sprite num9;
     private List<Sprite> nums = new List<Sprite>();
 
-
+    //Clock sprites
     public GameObject ClockDigit1;
     public GameObject ClockDigit2;
     private SpriteRenderer CD1;
     private SpriteRenderer CD2;
     public int time = 0;
 
+    //Money Sprites
     public GameObject MoneyDigit1;
     public GameObject MoneyDigit2;
     public GameObject MoneyDigit3;
@@ -34,6 +38,7 @@ public class DashController : MonoBehaviour
     private SpriteRenderer MD3;
     public int money = 0;
 
+    //Temperature Sprites
     public GameObject TempDigit1;
     public GameObject TempDigit2;
     public GameObject TempDigit3;
@@ -42,7 +47,7 @@ public class DashController : MonoBehaviour
     private SpriteRenderer TD3;
     public int temp = 0;
 
-
+    //Kilowatt-Hours Sprites
     public GameObject KwDigit1;
     public GameObject KwDigit2;
     public GameObject KwDigit3;
@@ -51,6 +56,7 @@ public class DashController : MonoBehaviour
     private SpriteRenderer Kw3;
     public int KwH = 0;
 
+    //Percent Sprites
     public GameObject PercentDigit1;
     public GameObject PercentDigit2;
     public GameObject PercentDigit3;
@@ -59,7 +65,7 @@ public class DashController : MonoBehaviour
     private SpriteRenderer PD3;
     public int percent = 0;
 
-    //reactor stuff
+    //Reactor Sprites
     public GameObject reactor;
     private SpriteRenderer reactorSR;
     public Sprite state0;
@@ -74,6 +80,7 @@ public class DashController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //init <digit sprites> list
         nums.Add(num0);
         nums.Add(num1);
         nums.Add(num2);
@@ -85,6 +92,7 @@ public class DashController : MonoBehaviour
         nums.Add(num8);
         nums.Add(num9);
 
+        //init <reactor states> list
         states.Add(state0);
         states.Add(state1);
         states.Add(state2);
@@ -128,7 +136,8 @@ public class DashController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //<--Start reactor debug
         if (Input.GetKeyDown(KeyCode.RightArrow))
             state += 1;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -138,18 +147,21 @@ public class DashController : MonoBehaviour
             state = 0;
         if (state > 5)
             state = 5;
+        //End reactor debug -->
 
         if (time >= 24)
             time = 0;
 
-        CD1.sprite = nums[Mathf.RoundToInt(time / 10)];
-        CD2.sprite = nums[time % 10];
-
-        if (money > 999)
-            money = 999;
+        if (money > MaxMoney)
+            money = MaxMoney;
 
         if (percent > 100)
             percent = 100;
+
+        CD1.sprite = nums[Mathf.RoundToInt(time / 10)];
+        CD2.sprite = nums[time % 10];
+
+        reactorSR.sprite = states[state];
 
         MD1.sprite = nums[Mathf.RoundToInt(money / 100)];
         MD2.sprite = nums[Mathf.RoundToInt((money % 100) / 10)];
@@ -166,10 +178,6 @@ public class DashController : MonoBehaviour
         PD1.sprite = nums[Mathf.RoundToInt(percent / 100)];
         PD2.sprite = nums[Mathf.RoundToInt((percent % 100) / 10)];
         PD3.sprite = nums[percent % 10];
-
-        reactorSR.sprite = states[state];
-
-        //yeetus
     }
 
     IEnumerator Hour() 
