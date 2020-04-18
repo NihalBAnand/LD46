@@ -278,7 +278,10 @@ public class DashController : MonoBehaviour
     private void endHour()
     {
         time++;
+        temp += Mathf.RoundToInt((MaxWater - waterLevel)/3);
+
         efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
+        if (efficiency <= 0) efficiency = 1; 
         percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
         if (temp - 100>=0)
         {
