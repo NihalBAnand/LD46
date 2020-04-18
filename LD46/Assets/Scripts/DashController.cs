@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DashController : MonoBehaviour
 {
+    private const float HourLength = 3f; // CHANGE TO 30 FOR FINAL DEPLOY
+
     public Sprite num0;
     public Sprite num1;
     public Sprite num2;
@@ -116,6 +118,10 @@ public class DashController : MonoBehaviour
 
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
+
+        //DO LAST NO MATTER WHAT
+        //I MEAN IT
+        StartCoroutine(Hour());
     }
 
 
@@ -132,6 +138,9 @@ public class DashController : MonoBehaviour
             state = 0;
         if (state > 5)
             state = 5;
+
+        if (time >= 24)
+            time = 0;
 
         CD1.sprite = nums[Mathf.RoundToInt(time / 10)];
         CD2.sprite = nums[time % 10];
@@ -161,5 +170,12 @@ public class DashController : MonoBehaviour
         reactorSR.sprite = states[state];
 
         //yeetus
+    }
+
+    IEnumerator Hour() 
+    {
+        yield return new WaitForSeconds(HourLength); 
+        time++;
+        StartCoroutine(Hour());
     }
 }
