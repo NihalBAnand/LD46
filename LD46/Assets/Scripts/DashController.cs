@@ -200,6 +200,7 @@ public class DashController : MonoBehaviour
 
     IEnumerator Hour() 
     {
+        //Every hour logic
         yield return new WaitForSeconds(HourLength); 
         time++;
         StartCoroutine(Hour());

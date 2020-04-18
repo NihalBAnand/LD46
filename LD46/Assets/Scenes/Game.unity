@@ -237,6 +237,7 @@ MonoBehaviour:
   ClockDigit1: {fileID: 1312314991}
   ClockDigit2: {fileID: 1038446786}
   time: 0
+  day: 0
   MoneyDigit1: {fileID: 788170372}
   MoneyDigit2: {fileID: 221705980}
   MoneyDigit3: {fileID: 1433363357}
@@ -1895,7 +1896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174789624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.007, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1966080240}
