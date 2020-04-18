@@ -280,7 +280,7 @@ public class DashController : MonoBehaviour
         if (!paused)
         {
             endHour();
-            if (UnityEngine.Random.Range(0f, 100f) >= percent)
+            if (UnityEngine.Random.Range(0f, 100f) >= percent || temp > 499 || radiation >= maxRads)
             {
                 Debug.Log("LMAO you lost");
             }
