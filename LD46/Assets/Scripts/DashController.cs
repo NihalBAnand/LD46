@@ -280,13 +280,28 @@ public class DashController : MonoBehaviour
         if (!paused)
         {
             endHour();
-            if (UnityEngine.Random.Range(0f, 100f) >= percent || temp > 499 || radiation >= maxRads)
-            {
-                Debug.Log("LMAO you lost");
-            }
+            GameOver();
+ 
         }
 
         StartCoroutine(Hour());
+    }
+
+    private void GameOver()
+    {
+        if (UnityEngine.Random.Range(0f, 100f) >= percent)
+        {
+            Debug.Log("LMAO you lost");
+        }
+        else if(temp > 499)
+        {
+            Debug.Log("LMAO you lost");
+        }
+        else if (radiation >= maxRads)
+        {
+            Debug.Log("LMAO you lost");
+        }
+
     }
 
     private void endHour()
