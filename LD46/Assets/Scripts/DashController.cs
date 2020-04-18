@@ -100,6 +100,8 @@ public class DashController : MonoBehaviour
         states.Add(state4);
         states.Add(state5);
 
+        //<--Start UI inits
+
         //clock
         CD1 = ClockDigit1.GetComponent<SpriteRenderer>();
         CD2 = ClockDigit2.GetComponent<SpriteRenderer>();
@@ -126,6 +128,8 @@ public class DashController : MonoBehaviour
 
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
+
+        //End UI inits -->
 
         //DO LAST NO MATTER WHAT
         //I MEAN IT
