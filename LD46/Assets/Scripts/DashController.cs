@@ -68,6 +68,7 @@ public class DashController : MonoBehaviour
         TD1 = TempDigit1.GetComponent<SpriteRenderer>();
         TD2 = TempDigit2.GetComponent<SpriteRenderer>();
         TD3 = TempDigit3.GetComponent<SpriteRenderer>();
+        //final inits
     }
 
 
