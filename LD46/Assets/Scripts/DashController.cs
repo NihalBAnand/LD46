@@ -168,7 +168,7 @@ public class DashController : MonoBehaviour
     }
 
 
-
+    
     // Update is called once per frame
     void Update()
     {   
@@ -280,6 +280,10 @@ public class DashController : MonoBehaviour
         if (!paused)
         {
             endHour();
+            if (UnityEngine.Random.Range(0f, 100f) >= percent)
+            {
+                Debug.Log("LMAO you lost");
+            }
         }
 
         StartCoroutine(Hour());
@@ -298,9 +302,9 @@ public class DashController : MonoBehaviour
 
         temp += Mathf.RoundToInt((MaxWater - waterLevel)/3);
 
-        efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
-        if (efficiency <= 0) efficiency = 1; 
-        percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
+        //efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
+        
+        //percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
         if (flushState == 1)
         {
             radiation = 0;
@@ -322,7 +326,9 @@ public class DashController : MonoBehaviour
 
         efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
         percent = Mathf.RoundToInt((float)Math.Pow(percentDecrease,(controlRods - rodInUse)));
-
+        
+        if (efficiency <= 1)
+            efficiency = 1;
         if (temp - 100>=0)
         {
             waterLevel -= Mathf.RoundToInt((temp - 100) / 10);
