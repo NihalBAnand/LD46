@@ -13,6 +13,7 @@ public class DashController : MonoBehaviour
     //Stats
     public int money = 0;
     public int percent = 0;
+    public int maxrads = 250;
     public int radiation = 0;
     public int temp = 0;
     public int population = 100;
@@ -219,15 +220,16 @@ public class DashController : MonoBehaviour
 
     private void dayend()
     {
-        day += 1;
-        time = 0;
-        waterlevel = 100;
+        moneyfrompower();
         if (day % popIncFreq == 0)
         {
             population += popIncRate;
             dailyPowerUse = population * 24;
         }
-        moneyfrompower();
+        waterlevel = 100;
+        dailyPowerUse = population * 24;
+        time = 0;
+        day += 1;
     }
 
     private void moneyfrompower()
