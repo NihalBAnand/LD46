@@ -15,21 +15,21 @@ public class DashController : MonoBehaviour
     public Sprite num7;
     public Sprite num8;
     public Sprite num9;
-    public List<Sprite> nums = new List<Sprite>();
+    private List<Sprite> nums = new List<Sprite>();
 
 
     public GameObject ClockDigit1;
     public GameObject ClockDigit2;
-    public SpriteRenderer CD1;
-    public SpriteRenderer CD2;
+    private SpriteRenderer CD1;
+    private SpriteRenderer CD2;
     public int time = 0;
 
     public GameObject MoneyDigit1;
     public GameObject MoneyDigit2;
     public GameObject MoneyDigit3;
-    public SpriteRenderer MD1;
-    public SpriteRenderer MD2;
-    public SpriteRenderer MD3;
+    private SpriteRenderer MD1;
+    private SpriteRenderer MD2;
+    private SpriteRenderer MD3;
     public int money = 0;
 
 
