@@ -155,8 +155,10 @@ public class DashController : MonoBehaviour
         //End reactor debug -->
 
         if (time >= 24)
+        {
             day += 1;
             time = 0;
+        }
 
         if (money > MaxMoney)
             money = MaxMoney;
