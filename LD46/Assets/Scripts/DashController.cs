@@ -89,5 +89,7 @@ public class DashController : MonoBehaviour
         TD1.sprite = nums[Mathf.RoundToInt(temp / 100)];
         TD2.sprite = nums[Mathf.RoundToInt((temp % 100) / 10)];
         TD3.sprite = nums[temp % 10];
+
+        //yeetus
     }
 }
