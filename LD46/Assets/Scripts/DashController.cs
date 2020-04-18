@@ -32,6 +32,8 @@ public class DashController : MonoBehaviour
     public int powerGain = 0;
     public int efficiency = 1;
 
+    //flush
+    public int flushState = 0; // 0-3
 
     //flow control
     public bool paused = false;
@@ -223,6 +225,12 @@ public class DashController : MonoBehaviour
         //End UI display logic -->
     }
 
+    public void Flush()
+    {
+        if (flushState < 1)
+            flushState = 1;
+    }
+
     private void dayend()
     {
         paused = true;
@@ -278,11 +286,36 @@ public class DashController : MonoBehaviour
     private void endHour()
     {
         time++;
+
+        if (flushState == 1)
+        {
+            radiation = 0;
+        }
+
+
         temp += Mathf.RoundToInt((MaxWater - waterLevel)/3);
 
         efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
         if (efficiency <= 0) efficiency = 1; 
         percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
+        if (flushState == 1)
+        {
+            radiation = 0;
+            percent += 10;
+            if (percent > 100) percent = 100;
+            flushState = 2;
+        } 
+        else if (flushState == 2)
+        {
+            flushState = 3;
+        }
+        else if (flushState == 3)
+        {
+            percent -= 10;
+            if (percent < 0) percent = 0;
+            flushState = 0;
+        }
+
         if (temp - 100>=0)
         {
             waterLevel -= Mathf.RoundToInt((temp - 100) / 10);
@@ -290,6 +323,9 @@ public class DashController : MonoBehaviour
             powerGain *= efficiency;
         }
         KwH += powerGain;
+        if (flushState < 1)
+            radiation += 5;
 
     }
+
 }

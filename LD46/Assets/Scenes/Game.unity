@@ -224,6 +224,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79ec72aaf463734a85f3c36d6598b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 0
+  percentDecrease: 2.15
+  percent: 0
+  maxRads: 250
+  radiation: 0
+  temp: 0
+  population: 100
+  popIncRate: 10
+  popIncFreq: 3
+  dailyPowerUse: 0
+  waterLevel: 100
+  MaxWater: 100
+  controlRods: 6
+  rodInUse: 6
+  excessStorage: 0
+  priceOfPower: 1
+  storageCapacity: 300
+  strike: 0
+  powerGain: 0
+  efficiency: 1
+  flushState: 0
+  paused: 0
   num0: {fileID: 21300000, guid: 0e0836eb6aac63043b3a9d6880cd6dda, type: 3}
   num1: {fileID: 21300000, guid: 405431bb755b81d42bb0935d36613d25, type: 3}
   num2: {fileID: 21300000, guid: d6c0a76bd49b76b4bba98cfee0c5b81e, type: 3}
@@ -241,11 +263,9 @@ MonoBehaviour:
   MoneyDigit1: {fileID: 788170372}
   MoneyDigit2: {fileID: 221705980}
   MoneyDigit3: {fileID: 1433363357}
-  money: 0
   TempDigit1: {fileID: 1102627352}
   TempDigit2: {fileID: 1988275992}
   TempDigit3: {fileID: 646272364}
-  temp: 0
   KwDigit1: {fileID: 1897812284}
   KwDigit2: {fileID: 407925626}
   KwDigit3: {fileID: 486718632}
@@ -253,7 +273,6 @@ MonoBehaviour:
   PercentDigit1: {fileID: 305986877}
   PercentDigit2: {fileID: 590457876}
   PercentDigit3: {fileID: 491237975}
-  percent: 0
   reactor: {fileID: 922373356}
   state0: {fileID: 21300000, guid: fe46b33970f8ce9408170a722aa40cca, type: 3}
   state1: {fileID: 21300000, guid: 7fc105c8ee33c69469ca297357313dfb, type: 3}
