@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DashController : MonoBehaviour
 {
-    //constants for no hardcoding lmao
+    //constants for no hardcoding lol
     private const float HourLength = 3f; // CHANGE TO 30 FOR FINAL DEPLOY
     private const int MaxMoney = 999;
 
