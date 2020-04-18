@@ -27,9 +27,10 @@ public class DashController : MonoBehaviour
     public int priceOfPower = 1;
     public int storagecapcity = 300;
     public int strike = 0;
- 
 
 
+    //flow control
+    public bool paused = false;
 
     //Number sprites for digits
     public Sprite num0;
@@ -220,6 +221,7 @@ public class DashController : MonoBehaviour
 
     private void dayend()
     {
+        paused = true;
         moneyfrompower();
         if (day % popIncFreq == 0)
         {
@@ -230,6 +232,7 @@ public class DashController : MonoBehaviour
         dailyPowerUse = population * 24;
         time = 0;
         day += 1;
+        paused = false;
     }
 
     private void moneyfrompower()
@@ -257,8 +260,9 @@ public class DashController : MonoBehaviour
     IEnumerator Hour() 
     {
         //Every hour logic
-        yield return new WaitForSeconds(HourLength); 
-        time++;
+        yield return new WaitForSeconds(HourLength);
+        if (!paused)
+            time++;
         StartCoroutine(Hour());
     }
 }
