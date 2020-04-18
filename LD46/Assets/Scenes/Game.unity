@@ -1460,7 +1460,6 @@ GameObject:
   m_Component:
   - component: {fileID: 922373357}
   - component: {fileID: 922373358}
-  - component: {fileID: 922373359}
   m_Layer: 0
   m_Name: Reactor
   m_TagString: Untagged
@@ -1532,21 +1531,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &922373359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922373356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b73bb82cce098604ebfc55ae7a55c29f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultState: {fileID: 21300000, guid: fe46b33970f8ce9408170a722aa40cca, type: 3}
-  state2: {fileID: 21300000, guid: 544b3c7cfe75a9746ad0d89a25b78ad0, type: 3}
-  spriteRenderer: {fileID: 0}
 --- !u!1 &1038446786
 GameObject:
   m_ObjectHideFlags: 0
