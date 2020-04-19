@@ -1094,6 +1094,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904723958}
   m_CullTransparentMesh: 0
+--- !u!1 &977838099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977838100}
+  - component: {fileID: 977838102}
+  - component: {fileID: 977838101}
+  m_Layer: 5
+  m_Name: MoneyVal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &977838100
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977838099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1206828437}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -41.5, y: -3.47}
+  m_SizeDelta: {x: 10.736443, y: 7.5461006}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &977838101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977838099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.05013609, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: a41f3ec69f1b4f044bf3152aec73eed3, type: 3}
+    m_FontSize: 8
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 000
+--- !u!222 &977838102
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977838099}
+  m_CullTransparentMesh: 0
 --- !u!1 &1093486051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1405,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1158984233}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1206828440}
+        m_MethodName: Flush
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1158984233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,6 +1495,7 @@ RectTransform:
   - {fileID: 1726512091}
   - {fileID: 297146920}
   - {fileID: 1158984231}
+  - {fileID: 977838100}
   m_Father: {fileID: 68146553}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1468,7 +1557,7 @@ MonoBehaviour:
   percent: 0
   maxRads: 250
   radiation: 0
-  temp: 0
+  temp: 101
   population: 100
   popIncRate: 10
   popIncFreq: 3
@@ -1491,8 +1580,11 @@ MonoBehaviour:
   rods: {fileID: 723827698}
   KwHval: {fileID: 888284082}
   PercentVal: {fileID: 2021237373}
+
   tempVal: {fileID: 904723960}
   timeVal: {fileID: 1134102347}
+
+  moneyVal: {fileID: 977838101}
   reactor: {fileID: 1247167276}
   state0: {fileID: 21300000, guid: fe46b33970f8ce9408170a722aa40cca, type: 3}
   state1: {fileID: 21300000, guid: 7fc105c8ee33c69469ca297357313dfb, type: 3}
