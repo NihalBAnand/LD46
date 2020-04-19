@@ -34,6 +34,7 @@ public class DashController : MonoBehaviour
     public int powerGain = 0;
     public int efficiency = 1;
     public int KwH = 0;
+    public int numEvents = 4;
 
     //time
     public int time = 0;
@@ -330,7 +331,14 @@ public class DashController : MonoBehaviour
         time = 0;
         day += 1;
         KwHTodayVAl.text = dailyPowerUse.ToString();
+        updateEvent();
         paused = false;
+        
+    }
+
+    private void updateEvent()
+    {
+        
     }
 
     private void moneyfrompower()
