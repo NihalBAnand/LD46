@@ -395,7 +395,7 @@ public class DashController : MonoBehaviour
             radiation += 5;
         //TextUpdates
         dispKwh = KwH;
-        dispKwh = (float)Math.Round((double)(dispKwh / 1000), 3);
+        dispKwh = (float)Math.Round(((double)dispKwh / 1000), 1);
         KwHval.text = dispKwh.ToString();
 
     }
