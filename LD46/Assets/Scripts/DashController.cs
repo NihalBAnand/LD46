@@ -35,6 +35,8 @@ public class DashController : MonoBehaviour
     public int efficiency = 1;
     public int KwH = 0;
     public int numEvents = 4;
+    public int News = 0;
+
 
     //time
     public int time = 0;
@@ -109,8 +111,10 @@ public class DashController : MonoBehaviour
     public Text tempVal;
     public Text timeVal;
     public Text KwHTodayVAl;
-
+    public Text batteryVal;
     public Text moneyVal;
+
+    public Text newsText;
 
     public GameObject radDial;
     public float radRotation = 90;
@@ -194,10 +198,11 @@ public class DashController : MonoBehaviour
 
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
+        newsText.text = "Holmesville, WV: man argues..";
 
         //radDial.transform.rotation
 
-        
+
 
 
 
@@ -219,6 +224,8 @@ public class DashController : MonoBehaviour
 
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
+
+        batteryVal.text = Math.Round(((float)excessStorage / 1000), 1).ToString();
 
         radRotation = 180 * ((float)radiation / (float)maxRads);
         if (radRotation >= 90)
@@ -333,7 +340,31 @@ public class DashController : MonoBehaviour
         KwHTodayVAl.text = dailyPowerUse.ToString();
         updateEvent();
         paused = false;
+        if (day % 7 == 0)
+        {
+            UpdateNews();
+        }
         
+    }
+
+    private void UpdateNews()
+    {
+        if(News == 0)
+        {
+            newsText.text = "Man argues with Shampoo for four hours";
+        }
+        if(News == 1)
+        {
+            newsText.text = "99% of people think Bolivia is in the Artic Circle";
+        }
+        if(News == 2)
+        {
+            newsText.text = "Easter egg hunt relocated to video games";
+        }
+        if(News == 3)
+        {
+            newsText.text = "High blood pressure cases spikes as the deadline for Ludam Dare approaches";
+        }
     }
 
     private void updateEvent()
