@@ -33,7 +33,9 @@ public class DashController : MonoBehaviour
     public int efficiency = 1;
     public int KwH = 0;
 
-
+    //time
+    public int time = 0;
+    public int day = 0;
 
     //flush
     public int flushState = 0; // 0-3
@@ -42,6 +44,7 @@ public class DashController : MonoBehaviour
     //flow control
     public bool paused = false;
 
+    /*
     //Number sprites for digits
     public Sprite num0;
     public Sprite num1;
@@ -54,15 +57,16 @@ public class DashController : MonoBehaviour
     public Sprite num8;
     public Sprite num9;
     private List<Sprite> nums = new List<Sprite>();
+    */
 
+    /*
     //Clock sprites
     public GameObject ClockDigit1;
     public GameObject ClockDigit2;
     private SpriteRenderer CD1;
     private SpriteRenderer CD2;
-    public int time = 0;
-    public int day = 0;
-
+    
+    
     //Money Sprites
     public GameObject MoneyDigit1;
     public GameObject MoneyDigit2;
@@ -94,7 +98,7 @@ public class DashController : MonoBehaviour
     private SpriteRenderer PD1;
     private SpriteRenderer PD2;
     private SpriteRenderer PD3;
-
+    */
     //Reactor Sprites
     public GameObject reactor;
     private SpriteRenderer reactorSR;
@@ -106,10 +110,11 @@ public class DashController : MonoBehaviour
     public Sprite state5;
     private List<Sprite> states = new List<Sprite>();
     public int state = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
+        /*
         //init <digit sprites> list
         nums.Add(num0);
         nums.Add(num1);
@@ -121,6 +126,7 @@ public class DashController : MonoBehaviour
         nums.Add(num7);
         nums.Add(num8);
         nums.Add(num9);
+        */
 
         //init <reactor states> list
         states.Add(state0);
@@ -130,7 +136,7 @@ public class DashController : MonoBehaviour
         states.Add(state4);
         states.Add(state5);
 
-        //<--Start UI inits
+        /*<--Start UI inits
 
         //clock
         CD1 = ClockDigit1.GetComponent<SpriteRenderer>();
@@ -156,12 +162,15 @@ public class DashController : MonoBehaviour
         PD2 = PercentDigit2.GetComponent<SpriteRenderer>();
         PD3 = PercentDigit3.GetComponent<SpriteRenderer>();
 
+        
+        
+
+        */
+
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
 
         dailyPowerUse = population * 24;
-
-        //End UI inits -->
 
         //DO LAST NO MATTER WHAT
         //I MEAN IT
@@ -173,7 +182,7 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        //<--Start reactor debug
+        /*<--Start reactor debug
         if (Input.GetKeyDown(KeyCode.RightArrow))
             state += 1;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -183,7 +192,7 @@ public class DashController : MonoBehaviour
             state = 0;
         if (state > 5)
             state = 5;
-        //End reactor debug -->
+        //End reactor debug -->*/
 
         if (time >= 24)
         {
@@ -210,7 +219,7 @@ public class DashController : MonoBehaviour
         if (percent > 100)
             percent = 100;
 
-        //<-- Start UI display logic
+        /*<-- Start UI display logic
 
         //clock
         CD1.sprite = nums[Mathf.RoundToInt(time / 10)];
@@ -239,7 +248,7 @@ public class DashController : MonoBehaviour
         PD2.sprite = nums[Mathf.RoundToInt((percent % 100) / 10)];
         PD3.sprite = nums[percent % 10];
 
-        //End UI display logic -->
+        //End UI display logic -->*/
     }
 
     public void Flush()
