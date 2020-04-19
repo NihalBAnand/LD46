@@ -271,6 +271,8 @@ public class DashController : MonoBehaviour
         if (percent > 100)
             percent = 100;
         reactor.sprite = states[state];
+        if (waterLevel < 0)
+            waterLevel = 0;
 
         /*<-- Start UI display logic
 
@@ -393,32 +395,36 @@ public class DashController : MonoBehaviour
             radiation = 0;
         }
 
-        if (waterLevel < 90)
+        if (waterLevel < 90 && waterLevel > 0)
             temp += Mathf.RoundToInt((MaxWater - waterLevel) / 3);
         else
             temp -= 5;
 
         //efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
-        
+
         //percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
-        if (flushState == 1)
+        switch (flushState)
         {
-            radiation = 0;
-            percent += 10;
-            waterLevel = 100;
-            if (percent > 100) percent = 100;
-            flushState = 2;
-        } 
-        else if (flushState == 2)
-        {
-            flushState = 3;
+            case 1:
+                radiation = 0;
+                percent += 10;
+                waterLevel = 100;
+                if (percent > 100) percent = 100;
+                flushState = 2;
+                break;
+
+
+            case 2:
+                flushState = 3;
+                break;
+
+            case 3:
+                percent -= 10;
+                if (percent < 0) percent = 0;
+                flushState = 0;
+                break;
         }
-        else if (flushState == 3)
-        {
-            percent -= 10;
-            if (percent < 0) percent = 0;
-            flushState = 0;
-        }
+    
 
 
         efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
