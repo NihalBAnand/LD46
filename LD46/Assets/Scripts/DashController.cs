@@ -34,6 +34,7 @@ public class DashController : MonoBehaviour
     public int powerGain = 0;
     public int efficiency = 1;
     public int KwH = 0;
+    public int numEvents = 4;
 
     //time
     public int time = 0;
@@ -116,9 +117,10 @@ public class DashController : MonoBehaviour
 
     public Image water;
 
+    public Image battery;
+
     //Reactor Sprites
-    public GameObject reactor;
-    private SpriteRenderer reactorSR;
+    public Image reactor;
     public Sprite state0;
     public Sprite state1;
     public Sprite state2;
@@ -195,8 +197,7 @@ public class DashController : MonoBehaviour
 
         //radDial.transform.rotation
 
-        //reactor
-        reactorSR = reactor.GetComponent<SpriteRenderer>();
+        
 
 
 
@@ -232,6 +233,8 @@ public class DashController : MonoBehaviour
 
         water.rectTransform.sizeDelta = new Vector2(100, 100 *((float)waterLevel / (float)MaxWater));
 
+        battery.rectTransform.sizeDelta = new Vector2(100, 400 * ((float)excessStorage / (float)storageCapacity));
+
         /*
         dispKwh = KwH;
         dispKwh =(float) Math.Round((double)(dispKwh / 1000), 3);
@@ -255,15 +258,15 @@ public class DashController : MonoBehaviour
 
         if (temp > 470)
             state = 4;
-        else if (temp > 400)
+        if (temp > 400 && temp <= 470)
             state = 3;
-        else if (temp > 250)
+        if (temp > 250 && temp <= 400)
             state = 2;
-        else if (radiation > 225)
+        if (radiation > 225)
             state = 5;
-        else if (radiation > 100)
+        if (radiation > 100 && radiation <=225)
             state = 1;
-        else
+        if (radiation <= 100 && temp <= 250)
             state = 0;
         
 
@@ -272,6 +275,9 @@ public class DashController : MonoBehaviour
 
         if (percent > 100)
             percent = 100;
+        reactor.sprite = states[state];
+        if (waterLevel < 0)
+            waterLevel = 0;
 
         /*<-- Start UI display logic
 
@@ -280,7 +286,7 @@ public class DashController : MonoBehaviour
         CD2.sprite = nums[time % 10];
 
         //reactor
-        reactorSR.sprite = states[state];
+        
 
         //money
         MD1.sprite = nums[Mathf.RoundToInt(money / 100)];
@@ -325,7 +331,14 @@ public class DashController : MonoBehaviour
         time = 0;
         day += 1;
         KwHTodayVAl.text = dailyPowerUse.ToString();
+        updateEvent();
         paused = false;
+        
+    }
+
+    private void updateEvent()
+    {
+        
     }
 
     private void moneyfrompower()
@@ -394,32 +407,36 @@ public class DashController : MonoBehaviour
             radiation = 0;
         }
 
-        if (waterLevel < 90)
+        if (waterLevel < 90 && waterLevel > 0)
             temp += Mathf.RoundToInt((MaxWater - waterLevel) / 3);
         else
             temp -= 5;
 
         //efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
-        
+
         //percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
-        if (flushState == 1)
+        switch (flushState)
         {
-            radiation = 0;
-            percent += 10;
-            waterLevel = 100;
-            if (percent > 100) percent = 100;
-            flushState = 2;
-        } 
-        else if (flushState == 2)
-        {
-            flushState = 3;
+            case 1:
+                radiation = 0;
+                percent += 10;
+                waterLevel = 100;
+                if (percent > 100) percent = 100;
+                flushState = 2;
+                break;
+
+
+            case 2:
+                flushState = 3;
+                break;
+
+            case 3:
+                percent -= 10;
+                if (percent < 0) percent = 0;
+                flushState = 0;
+                break;
         }
-        else if (flushState == 3)
-        {
-            percent -= 10;
-            if (percent < 0) percent = 0;
-            flushState = 0;
-        }
+    
 
 
         efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
