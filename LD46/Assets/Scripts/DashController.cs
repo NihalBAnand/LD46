@@ -18,7 +18,7 @@ public class DashController : MonoBehaviour
     public int percent = 0;
     public int maxRads = 250;
     public int radiation = 0;
-    public int temp = 0;
+    public int temp = 101;
     public int population = 100;
     public int popIncRate = 10;
     public int popIncFreq = 3;
@@ -104,6 +104,7 @@ public class DashController : MonoBehaviour
     public Text rods;
     public Text KwHval;
     public Text PercentVal;
+    public Text moneyVal;
 
     //Reactor Sprites
     public GameObject reactor;
@@ -174,6 +175,7 @@ public class DashController : MonoBehaviour
         */
 
         rods.text = rodInUse.ToString();
+        
 
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
@@ -191,6 +193,7 @@ public class DashController : MonoBehaviour
     void Update()
     {
         rods.text = rodInUse.ToString();
+        moneyVal.text = money.ToString();
         /*
         dispKwh = KwH;
         dispKwh =(float) Math.Round((double)(dispKwh / 1000), 3);
