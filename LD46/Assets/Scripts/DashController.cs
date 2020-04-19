@@ -117,8 +117,7 @@ public class DashController : MonoBehaviour
     public Image water;
 
     //Reactor Sprites
-    public GameObject reactor;
-    private SpriteRenderer reactorSR;
+    public Image reactor;
     public Sprite state0;
     public Sprite state1;
     public Sprite state2;
@@ -195,8 +194,7 @@ public class DashController : MonoBehaviour
 
         //radDial.transform.rotation
 
-        //reactor
-        reactorSR = reactor.GetComponent<SpriteRenderer>();
+        
 
 
 
@@ -255,15 +253,15 @@ public class DashController : MonoBehaviour
 
         if (temp > 470)
             state = 4;
-        else if (temp > 400)
+        if (temp > 400 && temp <= 470)
             state = 3;
-        else if (temp > 250)
+        if (temp > 250 && temp <= 400)
             state = 2;
-        else if (radiation > 225)
+        if (radiation > 225)
             state = 5;
-        else if (radiation > 100)
+        if (radiation > 100 && radiation <=225)
             state = 1;
-        else
+        if (radiation <= 100 && temp <= 250)
             state = 0;
         
 
@@ -272,6 +270,7 @@ public class DashController : MonoBehaviour
 
         if (percent > 100)
             percent = 100;
+        reactor.sprite = states[state];
 
         /*<-- Start UI display logic
 
@@ -280,7 +279,7 @@ public class DashController : MonoBehaviour
         CD2.sprite = nums[time % 10];
 
         //reactor
-        reactorSR.sprite = states[state];
+        
 
         //money
         MD1.sprite = nums[Mathf.RoundToInt(money / 100)];
