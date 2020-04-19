@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 
 public class DashController : MonoBehaviour
@@ -99,6 +101,8 @@ public class DashController : MonoBehaviour
     private SpriteRenderer PD2;
     private SpriteRenderer PD3;
     */
+    public Text rods;
+
     //Reactor Sprites
     public GameObject reactor;
     private SpriteRenderer reactorSR;
@@ -167,6 +171,8 @@ public class DashController : MonoBehaviour
 
         */
 
+        rods.text = rodInUse.ToString();
+
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
 
@@ -181,7 +187,8 @@ public class DashController : MonoBehaviour
     
     // Update is called once per frame
     void Update()
-    {   
+    {
+        rods.text = rodInUse.ToString();
         /*<--Start reactor debug
         if (Input.GetKeyDown(KeyCode.RightArrow))
             state += 1;
@@ -378,6 +385,17 @@ public class DashController : MonoBehaviour
         if (flushState < 1)
             radiation += 5;
 
+    }
+
+    public void AddControlRods()
+    {
+        if (rodInUse < controlRods)
+            rodInUse += 1;
+    }
+    public void RemoveControlRods()
+    {
+        if (rodInUse > 0)
+            rodInUse -= 1;
     }
 
 }
