@@ -102,6 +102,7 @@ public class DashController : MonoBehaviour
     private SpriteRenderer PD3;
     */
     public Text rods;
+    public Text kilos;
 
     //Reactor Sprites
     public GameObject reactor;
@@ -183,12 +184,15 @@ public class DashController : MonoBehaviour
         StartCoroutine(Hour());
     }
 
-
+    private float dispKwh;
     
     // Update is called once per frame
     void Update()
     {
         rods.text = rodInUse.ToString();
+        dispKwh = KwH;
+        dispKwh =(float) Math.Round((double)(dispKwh / 1000), 3);
+        kilos.text = dispKwh.ToString();
         /*<--Start reactor debug
         if (Input.GetKeyDown(KeyCode.RightArrow))
             state += 1;
