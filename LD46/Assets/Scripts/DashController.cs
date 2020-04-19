@@ -105,6 +105,7 @@ public class DashController : MonoBehaviour
     public Text KwHval;
     public Text PercentVal;
     public Text tempVal;
+    public Text timeVal;
 
     //Reactor Sprites
     public GameObject reactor;
@@ -347,7 +348,7 @@ public class DashController : MonoBehaviour
     {
         time++;
 
-
+        timeVal.text = time.ToString();
         if (flushState == 1)
         {
             radiation = 0;
