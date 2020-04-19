@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+
 
 
 public class DashController : MonoBehaviour
@@ -18,12 +18,12 @@ public class DashController : MonoBehaviour
     public int percent = 0;
     public int maxRads = 250;
     public int radiation = 0;
-    public int temp = 101;
+    public int temp = 150;
     public int population = 100;
     public int popIncRate = 10;
     public int popIncFreq = 3;
     public int dailyPowerUse;
-    public int waterLevel = 100;
+    public int waterLevel = 90;
     public int MaxWater = 100;
     public int controlRods = 6;
     public int rodInUse = 5;
@@ -113,6 +113,8 @@ public class DashController : MonoBehaviour
 
     public GameObject radDial;
     public float radRotation = 90;
+
+    public Image water;
 
     //Reactor Sprites
     public GameObject reactor;
@@ -228,6 +230,8 @@ public class DashController : MonoBehaviour
         }
         radDial.transform.rotation = Quaternion.Euler(0, 0, radRotation);
 
+        water.rectTransform.sizeDelta = new Vector2(100, 100 *((float)waterLevel / (float)MaxWater));
+
         /*
         dispKwh = KwH;
         dispKwh =(float) Math.Round((double)(dispKwh / 1000), 3);
@@ -316,7 +320,7 @@ public class DashController : MonoBehaviour
             population += popIncRate;
             dailyPowerUse = population * 24;
         }
-        waterLevel = MaxWater;
+        waterLevel = MaxWater - 10;
         dailyPowerUse = population * 24;
         time = 0;
         day += 1;
@@ -346,6 +350,7 @@ public class DashController : MonoBehaviour
             money += (priceOfPower) * (KwH);
             money += 10;
         }
+        money /= 1000;
     }
 
     IEnumerator Hour() 
@@ -389,8 +394,10 @@ public class DashController : MonoBehaviour
             radiation = 0;
         }
 
-
-        temp += Mathf.RoundToInt((MaxWater - waterLevel)/3);
+        if (waterLevel < 90)
+            temp += Mathf.RoundToInt((MaxWater - waterLevel) / 3);
+        else
+            temp -= 5;
 
         //efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
         
@@ -399,6 +406,7 @@ public class DashController : MonoBehaviour
         {
             radiation = 0;
             percent += 10;
+            waterLevel = 100;
             if (percent > 100) percent = 100;
             flushState = 2;
         } 
@@ -425,6 +433,8 @@ public class DashController : MonoBehaviour
             powerGain = (temp - 100) * 3;
             powerGain *= efficiency;
         }
+        else
+            waterLevel -= 2;
         KwH += powerGain;
         if (flushState < 1)
             radiation += 5;
@@ -446,6 +456,15 @@ public class DashController : MonoBehaviour
     {
         if (rodInUse > 0)
             rodInUse -= 1;
+    }
+
+    public void AddWater()
+    {
+        if (waterLevel + 10 <= MaxWater)
+        {
+            waterLevel += 10;
+            temp -= 10;
+        }
     }
 
 }
