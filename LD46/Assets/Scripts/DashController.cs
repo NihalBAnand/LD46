@@ -12,7 +12,7 @@ public class DashController : MonoBehaviour
 
     //Stats
     public int money = 0;
-    public double percentDecrease = 2.15;
+    public float percentDecrease = 2.5702f;
     public int percent = 0;
     public int maxRads = 250;
     public int radiation = 0;
@@ -31,6 +31,8 @@ public class DashController : MonoBehaviour
     public int strike = 0;
     public int powerGain = 0;
     public int efficiency = 1;
+    public int KwH = 0;
+
 
 
     //flush
@@ -84,7 +86,6 @@ public class DashController : MonoBehaviour
     private SpriteRenderer Kw1;
     private SpriteRenderer Kw2;
     private SpriteRenderer Kw3;
-    public int KwH = 0;
 
     //Percent Sprites
     public GameObject PercentDigit1;
@@ -303,17 +304,17 @@ public class DashController : MonoBehaviour
 
     private void GameOver()
     {
-        if (UnityEngine.Random.Range(0f, 100f) >= percent)
+        if (UnityEngine.Random.Range(0f, 100f) <= percent)
         {
-            Debug.Log("LMAO you lost");
+            Debug.Log("LMAO you lost - meltdown");
         }
         else if(temp > 499)
         {
-            Debug.Log("LMAO you lost");
+            Debug.Log("LMAO you lost - temp");
         }
         else if (radiation >= maxRads)
         {
-            Debug.Log("LMAO you lost");
+            Debug.Log("LMAO you lost - rads");
         }
 
     }
@@ -354,7 +355,7 @@ public class DashController : MonoBehaviour
 
 
         efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
-        percent = Mathf.RoundToInt((float)Math.Pow(percentDecrease,(controlRods - rodInUse)));
+        percent = Mathf.RoundToInt((float)Math.Pow((controlRods - rodInUse), percentDecrease));
         
         if (efficiency <= 1)
             efficiency = 1;
