@@ -220,7 +220,7 @@ public class DashController : MonoBehaviour
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
 
-        batteryVal.text = excessStorage.ToString();
+        batteryVal.text = Math.Round(((float)excessStorage / 1000), 1).ToString();
 
         radRotation = 180 * ((float)radiation / (float)maxRads);
         if (radRotation >= 90)
