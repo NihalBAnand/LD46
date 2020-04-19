@@ -106,6 +106,7 @@ public class DashController : MonoBehaviour
     public Text PercentVal;
     public Text tempVal;
     public Text timeVal;
+    public Text KwHTodayVAl;
 
     //Reactor Sprites
     public GameObject reactor;
@@ -174,14 +175,16 @@ public class DashController : MonoBehaviour
         
 
         */
+        dailyPowerUse = population * 24;
 
         rods.text = rodInUse.ToString();
         tempVal.text = temp.ToString();
+        KwHTodayVAl.text = dailyPowerUse.ToString();
 
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
 
-        dailyPowerUse = population * 24;
+
 
         //DO LAST NO MATTER WHAT
         //I MEAN IT
@@ -286,6 +289,7 @@ public class DashController : MonoBehaviour
         dailyPowerUse = population * 24;
         time = 0;
         day += 1;
+        KwHTodayVAl.text = dailyPowerUse.ToString();
         paused = false;
     }
 
