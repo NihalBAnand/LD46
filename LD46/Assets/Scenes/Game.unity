@@ -584,6 +584,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &484381589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 484381590}
+  - component: {fileID: 484381592}
+  - component: {fileID: 484381591}
+  m_Layer: 5
+  m_Name: RadDial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &484381590
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484381589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1206828437}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -74.532, y: -13.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.494, y: 0.5}
+--- !u!114 &484381591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484381589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e925e385bc372614b93ef09c78a38209, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &484381592
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484381589}
+  m_CullTransparentMesh: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1569,7 @@ RectTransform:
   - {fileID: 297146920}
   - {fileID: 1158984231}
   - {fileID: 977838100}
+  - {fileID: 484381590}
   m_Father: {fileID: 68146553}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1565,7 +1639,7 @@ MonoBehaviour:
   waterLevel: 100
   MaxWater: 100
   controlRods: 6
-  rodInUse: 6
+  rodInUse: 5
   excessStorage: 0
   priceOfPower: 1
   storageCapacity: 300
@@ -1580,17 +1654,19 @@ MonoBehaviour:
   rods: {fileID: 723827698}
   KwHval: {fileID: 888284082}
   PercentVal: {fileID: 2021237373}
-  tempVal: {fileID: 0}
-  timeVal: {fileID: 0}
-  KwHTodayVAl: {fileID: 0}
-  moneyVal: {fileID: 0}
-  reactor: {fileID: 0}
-  state0: {fileID: 0}
-  state1: {fileID: 0}
-  state2: {fileID: 0}
-  state3: {fileID: 0}
-  state4: {fileID: 0}
-  state5: {fileID: 0}
+  tempVal: {fileID: 904723960}
+  timeVal: {fileID: 1134102347}
+  KwHTodayVAl: {fileID: 1726512092}
+  moneyVal: {fileID: 977838101}
+  radDial: {fileID: 484381589}
+  radRotation: 90
+  reactor: {fileID: 1247167276}
+  state0: {fileID: 21300000, guid: fe46b33970f8ce9408170a722aa40cca, type: 3}
+  state1: {fileID: 21300000, guid: 7fc105c8ee33c69469ca297357313dfb, type: 3}
+  state2: {fileID: 21300000, guid: 544b3c7cfe75a9746ad0d89a25b78ad0, type: 3}
+  state3: {fileID: 21300000, guid: b143e2aff2ca0b94485ef59eb908d0ec, type: 3}
+  state4: {fileID: 21300000, guid: 1df89270374a5b646a623d338eabe2c6, type: 3}
+  state5: {fileID: 21300000, guid: 9472843cc823a6249ac9c1ed67e15624, type: 3}
   state: 0
 --- !u!1 &1247167276
 GameObject:
@@ -1699,7 +1775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -76.1, y: -45.37}
+  m_AnchoredPosition: {x: -74.4, y: -45}
   m_SizeDelta: {x: 33.056572, y: 11.779856}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1726512092

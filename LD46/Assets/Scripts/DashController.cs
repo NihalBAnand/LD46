@@ -26,7 +26,7 @@ public class DashController : MonoBehaviour
     public int waterLevel = 100;
     public int MaxWater = 100;
     public int controlRods = 6;
-    public int rodInUse = 6;
+    public int rodInUse = 5;
     public int excessStorage = 0;
     public int priceOfPower = 1;
     public int storageCapacity = 300;
@@ -111,6 +111,9 @@ public class DashController : MonoBehaviour
 
     public Text moneyVal;
 
+    public GameObject radDial;
+    public float radRotation = 90;
+
     //Reactor Sprites
     public GameObject reactor;
     private SpriteRenderer reactorSR;
@@ -185,7 +188,10 @@ public class DashController : MonoBehaviour
         tempVal.text = temp.ToString();
         KwHTodayVAl.text = dailyPowerUse.ToString();
 
+        PercentVal.text = percent.ToString();
+        timeVal.text = time.ToString();
 
+        //radDial.transform.rotation
 
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
@@ -204,6 +210,24 @@ public class DashController : MonoBehaviour
     {
         rods.text = rodInUse.ToString();
         moneyVal.text = money.ToString();
+
+        tempVal.text = temp.ToString();
+        KwHTodayVAl.text = dailyPowerUse.ToString();
+
+        PercentVal.text = percent.ToString();
+        timeVal.text = time.ToString();
+
+        radRotation = 180 * ((float)radiation / (float)maxRads);
+        if (radRotation >= 90)
+        {
+            radRotation = -radRotation + 90;
+        }
+        else
+        {
+            radRotation = 90 - radRotation;
+        }
+        radDial.transform.rotation = Quaternion.Euler(0, 0, radRotation);
+
         /*
         dispKwh = KwH;
         dispKwh =(float) Math.Round((double)(dispKwh / 1000), 3);
