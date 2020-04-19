@@ -116,6 +116,8 @@ public class DashController : MonoBehaviour
 
     public Image water;
 
+    public Image battery;
+
     //Reactor Sprites
     public Image reactor;
     public Sprite state0;
@@ -229,6 +231,8 @@ public class DashController : MonoBehaviour
         radDial.transform.rotation = Quaternion.Euler(0, 0, radRotation);
 
         water.rectTransform.sizeDelta = new Vector2(100, 100 *((float)waterLevel / (float)MaxWater));
+
+        battery.rectTransform.sizeDelta = new Vector2(100, 400 * ((float)excessStorage / (float)storageCapacity));
 
         /*
         dispKwh = KwH;
