@@ -1491,6 +1491,7 @@ MonoBehaviour:
   rods: {fileID: 723827698}
   KwHval: {fileID: 888284082}
   PercentVal: {fileID: 2021237373}
+  tempVal: {fileID: 904723960}
   reactor: {fileID: 1247167276}
   state0: {fileID: 21300000, guid: fe46b33970f8ce9408170a722aa40cca, type: 3}
   state1: {fileID: 21300000, guid: 7fc105c8ee33c69469ca297357313dfb, type: 3}

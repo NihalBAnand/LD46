@@ -104,6 +104,7 @@ public class DashController : MonoBehaviour
     public Text rods;
     public Text KwHval;
     public Text PercentVal;
+    public Text tempVal;
 
     //Reactor Sprites
     public GameObject reactor;
@@ -174,6 +175,7 @@ public class DashController : MonoBehaviour
         */
 
         rods.text = rodInUse.ToString();
+        tempVal.text = temp.ToString();
 
         //reactor
         reactorSR = reactor.GetComponent<SpriteRenderer>();
@@ -394,6 +396,8 @@ public class DashController : MonoBehaviour
         dispKwh = KwH;
         dispKwh = (float)Math.Round((double)(dispKwh / 1000), 3);
         KwHval.text = dispKwh.ToString();
+        PercentVal.text = percent.ToString();
+        tempVal.text = temp.ToString();
 
     }
 
