@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Lose_Meltdown.unity
+    guid: 051663f3b8904db4ea50242b2d485f68
+  - enabled: 1
+    path: Assets/Scenes/Lose_Radiation.unity
+    guid: cd886d281a2a84e47b6c2147c8755638
+  - enabled: 1
+    path: Assets/Scenes/Lose_Temperature.unity
+    guid: 32aea298b41ac1a49a6fe005d3ae1dad
   m_configObjects: {}

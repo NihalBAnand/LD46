@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -419,15 +420,15 @@ public class DashController : MonoBehaviour
     {
         if (UnityEngine.Random.Range(0f, 100f) <= percent)
         {
-            Debug.Log("LMAO you lost - meltdown");
+            SceneManager.LoadScene("Lose_Meltdown");
         }
         else if(temp > 499)
         {
-            Debug.Log("LMAO you lost - temp");
+            SceneManager.LoadScene("Lose_Temperature");
         }
         else if (radiation >= maxRads)
         {
-            Debug.Log("LMAO you lost - rads");
+            SceneManager.LoadScene("Lose_Radiation");
         }
 
     }
