@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class DashController : MonoBehaviour
 {
     //constants for no hardcoding lol
-    private const float HourLength = 3f; // CHANGE TO 30 FOR FINAL DEPLOY
+    private const float HourLength = 5f; // CHANGE TO 5 FOR FINAL DEPLOY
     private const int MaxMoney = 999;
 
     //Stats
@@ -29,7 +29,7 @@ public class DashController : MonoBehaviour
     public int rodInUse = 5;
     public int excessStorage = 0;
     public int priceOfPower = 1;
-    public int storageCapacity = 300;
+    public int storageCapacity = 300000;
     public int strike = 0;
     public int powerGain = 0;
     public int efficiency = 1;
@@ -40,7 +40,7 @@ public class DashController : MonoBehaviour
 
     //time
     public int time = 0;
-    public int day = 0;
+    public int day = 1;
 
     //flush
     public int flushState = 0; // 0-3
@@ -115,6 +115,7 @@ public class DashController : MonoBehaviour
     public Text moneyVal;
 
     public Text newsText;
+    public Text calText;
 
     public GameObject radDial;
     public float radRotation = 90;
@@ -198,7 +199,7 @@ public class DashController : MonoBehaviour
 
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
-        newsText.text = "Holmesville, WV: man argues..";
+        newsText.text = "Study proves that math is related to science";
 
         //radDial.transform.rotation
 
@@ -226,6 +227,7 @@ public class DashController : MonoBehaviour
         timeVal.text = time.ToString();
 
         batteryVal.text = Math.Round(((float)excessStorage / 1000), 1).ToString();
+        calText.text = day.ToString();
 
         radRotation = 180 * ((float)radiation / (float)maxRads);
         if (radRotation >= 90)
@@ -275,8 +277,8 @@ public class DashController : MonoBehaviour
             state = 1;
         if (radiation <= 100 && temp <= 250)
             state = 0;
-        
 
+        if (radiation > maxRads) radiation = maxRads;
         if (money > MaxMoney)
             money = MaxMoney;
 
@@ -337,11 +339,13 @@ public class DashController : MonoBehaviour
         dailyPowerUse = population * 24;
         time = 0;
         day += 1;
+        //radiation = 0;
         KwHTodayVAl.text = dailyPowerUse.ToString();
         updateEvent();
         paused = false;
         if (day % 7 == 0)
         {
+            News += 1;
             UpdateNews();
         }
         
@@ -351,19 +355,19 @@ public class DashController : MonoBehaviour
     {
         if(News == 0)
         {
-            newsText.text = "Man argues with Shampoo for four hours";
+            newsText.text = "Man argues with Shampoo bottles for four hours";
         }
         if(News == 1)
         {
-            newsText.text = "99% of people think Bolivia is in the Artic Circle";
+            newsText.text = "Most Americans think Bolivia is in the Arctic Circle";
         }
         if(News == 2)
         {
-            newsText.text = "Easter egg hunt relocated to video games";
+            newsText.text = "Easter egg hunts relocated to video games";
         }
         if(News == 3)
         {
-            newsText.text = "High blood pressure cases spikes as the deadline for Ludam Dare approaches";
+            newsText.text = "High blood pressure cases spike as Ludum Dare deadline approaches";
         }
     }
 
@@ -446,6 +450,13 @@ public class DashController : MonoBehaviour
         //efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
 
         //percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
+        
+    
+
+
+        efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
+        percent = Mathf.RoundToInt((float)Math.Pow((controlRods - rodInUse), percentDecrease));
+
         switch (flushState)
         {
             case 1:
@@ -459,20 +470,15 @@ public class DashController : MonoBehaviour
 
             case 2:
                 flushState = 3;
+                percent += 10;
+                if (percent > 100) percent = 100;
                 break;
 
             case 3:
-                percent -= 10;
-                if (percent < 0) percent = 0;
                 flushState = 0;
                 break;
         }
-    
 
-
-        efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
-        percent = Mathf.RoundToInt((float)Math.Pow((controlRods - rodInUse), percentDecrease));
-        
         if (efficiency <= 1)
             efficiency = 1;
         if (temp - 100>=0)
