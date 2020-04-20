@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose_Temperature.unity
     guid: 32aea298b41ac1a49a6fe005d3ae1dad
+  - enabled: 1
+    path: Assets/Scenes/Manual.unity
+    guid: 952f7cd496442904eba27920c19c1170
+  - enabled: 1
+    path: Assets/Scenes/StrikeOut.unity
+    guid: cd13ab7435d9f664aa368ef0da0da9ca
   m_configObjects: {}

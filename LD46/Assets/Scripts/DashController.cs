@@ -53,7 +53,10 @@ public class DashController : MonoBehaviour
     //flow control
     public bool paused = false;
     public bool shopping = false;
+    public bool manual = false;
 
+    public Text PowerValue;
+    public Slider Sell;
     public Text rods;
     public Text KwHval;
     public Text PercentVal;
@@ -70,6 +73,8 @@ public class DashController : MonoBehaviour
 
     public GameObject radDial;
     public float radRotation = 90;
+
+    public GameObject manualO;
 
     public Image water;
 
@@ -88,6 +93,11 @@ public class DashController : MonoBehaviour
     public int radP = 30;
     public int rodP = 30;
 
+    //dash board sprites
+    public Image strikeboard;
+    public Sprite strike1;
+    public Sprite strike2;
+    private List<Sprite> strikes = new List<Sprite>();
     //Reactor Sprites
     public Image reactor;
     public Sprite state0;
@@ -98,10 +108,12 @@ public class DashController : MonoBehaviour
     public Sprite state5;
     private List<Sprite> states = new List<Sprite>();
     public int state = 0;
-    
+    //shop pos = 43 -5.722e-06 607.7238 398.3781
     // Start is called before the first frame update
     void Start()
     {
+        shop.SetActive(false);
+        manualO.SetActive(false);
         //init <reactor states> list
         states.Add(state0);
         states.Add(state1);
@@ -110,6 +122,9 @@ public class DashController : MonoBehaviour
         states.Add(state4);
         states.Add(state5);
 
+        //init dashboard
+        strikes.Add(strike1);
+        strikes.Add(strike2);
         dailyPowerUse = population * 24;
 
         rods.text = rodInUse.ToString();
@@ -131,15 +146,47 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GlobalController.Instance.manual = true;
+            
+        }
         if (speedstate<0)
         {
             fastforwardOn.SetActive(true);
         }
         else fastforwardOn.SetActive(false);
-        rods.text = rodInUse.ToString();
-        moneyVal.text = money.ToString();
 
-        shopMoney.text = money.ToString();
+        //shop
+        if (shopping)
+        {
+            shop.SetActive(true);
+            paused = true;
+        }
+        else if (!shopping)
+        {
+            shop.SetActive(false);
+        }
+        if (GlobalController.Instance.manual)
+        {
+            manualO.SetActive(true);
+            paused = true;
+        }
+        else if (!GlobalController.Instance.manual)
+        {
+            manualO.SetActive(false);
+        }
+        if (!(shopping) && !(GlobalController.Instance.manual))
+        {
+            paused = false;
+        }
+        SliderPower();
+        rods.text = rodInUse.ToString();
+        moneyVal.text = (money/1000).ToString();
+
+        shopMoney.text = (money/1000).ToString();
 
         tempVal.text = temp.ToString();
         KwHTodayVAl.text = Math.Round((double)dailyPowerUse / 1000, 1).ToString();
@@ -199,20 +246,12 @@ public class DashController : MonoBehaviour
 
         if (percent > 100)
             percent = 100;
+        strikeboard.sprite = strikes[strike - 1];
         reactor.sprite = states[state];
         if (waterLevel < 0)
             waterLevel = 0;
 
-        if (shopping)
-        {
-            shop.SetActive(true);
-            paused = true;
-        }
-        else
-        {
-            shop.SetActive(false);
-            paused = false;
-        }
+
     }
 
     public void Flush()
@@ -235,13 +274,13 @@ public class DashController : MonoBehaviour
         time = 0;
         day += 1;
         KwHTodayVAl.text = dailyPowerUse.ToString();
-        updateEvent();
-        shopping = true;
+        if (day>0) shopping = true;
         if (day % 7 == 0)
         {
             News += 1;
             UpdateNews();
         }
+        KwH = 0;
         
     }
 
@@ -270,11 +309,6 @@ public class DashController : MonoBehaviour
         }
     }
 
-    private void updateEvent()
-    {
-        
-    }
-
     private void moneyfrompower()
     {
         if(dailyPowerUse<KwH)
@@ -297,8 +331,7 @@ public class DashController : MonoBehaviour
             money += (priceOfPower) * (KwH);
             money += 10;
         }
-        money /= 1000;
-    }
+}
 
     IEnumerator Hour() 
     {
@@ -316,7 +349,7 @@ public class DashController : MonoBehaviour
 
     private void GameOver()
     {
-        if (UnityEngine.Random.Range(0f, 100f) <= percent)
+        if (UnityEngine.Random.Range(1f, 100f) <= percent)
         {
             SceneManager.LoadScene("Lose_Meltdown");
         }
@@ -327,6 +360,10 @@ public class DashController : MonoBehaviour
         else if (radiation >= maxRads)
         {
             SceneManager.LoadScene("Lose_Radiation");
+        }
+        else if(strike == 3)
+        {
+            SceneManager.LoadScene("StrikeOut");
         }
 
     }
@@ -472,5 +509,21 @@ public class DashController : MonoBehaviour
             rodP += 20;
             percentDecrease -= 0.1f;
         }
+    }
+
+    public void SliderPower()
+    {
+        PowerValue.text = (((float)priceOfPower/10) * excessStorage* Sell.value).ToString();
+    }
+    public void SellPower()
+    {
+        money += Mathf.RoundToInt(((float)priceOfPower/10) * excessStorage * Sell.value);
+        excessStorage -= Mathf.RoundToInt(excessStorage * Sell.value);
+        if (excessStorage == 1) excessStorage = 0;
+    }
+
+    public void ManualBack()
+    {
+        GlobalController.Instance.manual = false;
     }
 }
