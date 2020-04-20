@@ -513,11 +513,11 @@ public class DashController : MonoBehaviour
 
     public void SliderPower()
     {
-        PowerValue.text = (priceOfPower * excessStorage* Sell.value).ToString();
+        PowerValue.text = (((float)priceOfPower/10) * excessStorage* Sell.value).ToString();
     }
     public void SellPower()
     {
-        money += Mathf.RoundToInt(priceOfPower * excessStorage * Sell.value);
+        money += Mathf.RoundToInt(((float)priceOfPower/10) * excessStorage * Sell.value);
         excessStorage -= Mathf.RoundToInt(excessStorage * Sell.value);
         if (excessStorage == 1) excessStorage = 0;
     }
