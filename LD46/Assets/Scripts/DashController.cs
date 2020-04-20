@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class DashController : MonoBehaviour
 {
     //constants for no hardcoding lol
-    private const float HourLength = 5f; // CHANGE TO 5 FOR FINAL DEPLOY
+    private float HourLength = 10f; // CHANGE TO 5 FOR FINAL DEPLOY
     private const int MaxMoney = 999;
 
     //Stats
@@ -42,6 +42,8 @@ public class DashController : MonoBehaviour
     //time
     public int time = 0;
     public int day = 1;
+    public int speedstate= 1;
+    public GameObject fastforwardOn;
 
     //flush
     public int flushState = 0; // 0-3
@@ -218,6 +220,11 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (speedstate<0)
+        {
+            fastforwardOn.SetActive(true);
+        }
+        else fastforwardOn.SetActive(false);
         rods.text = rodInUse.ToString();
         moneyVal.text = money.ToString();
 
@@ -499,6 +506,11 @@ public class DashController : MonoBehaviour
         KwHval.text = dispKwh.ToString();
         PercentVal.text = percent.ToString();
         tempVal.text = temp.ToString();
+        if (speedstate > 0)
+        {
+            HourLength = 10;
+        }
+        else HourLength = .2f;
 
     }
 
@@ -520,6 +532,10 @@ public class DashController : MonoBehaviour
             waterLevel += 10;
             temp -= 10;
         }
+    }
+    public void Fastforward()
+    {
+        speedstate *= -1;
     }
 
 }
