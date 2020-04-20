@@ -30,7 +30,7 @@ public class DashController : MonoBehaviour
     public int rodInUse = 5;
     public int excessStorage = 0;
     public int priceOfPower = 1;
-    public int storageCapacity = 300000;
+    public int storageCapacity = 50000;
     public int strike = 0;
     public int powerGain = 0;
     public int efficiency = 1;
@@ -337,7 +337,12 @@ public class DashController : MonoBehaviour
         if (shopping)
         {
             shop.SetActive(true);
-            
+            paused = true;
+        }
+        else
+        {
+            shop.SetActive(false);
+            paused = false;
         }
     }
 
@@ -364,7 +369,6 @@ public class DashController : MonoBehaviour
         KwHTodayVAl.text = dailyPowerUse.ToString();
         updateEvent();
         shopping = true;
-        paused = false;
         if (day % 7 == 0)
         {
             News += 1;
