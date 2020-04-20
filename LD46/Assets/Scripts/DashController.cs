@@ -152,6 +152,7 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (day == 29) SceneManager.LoadScene("WinScreen");
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
