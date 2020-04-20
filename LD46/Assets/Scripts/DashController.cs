@@ -337,6 +337,10 @@ public class DashController : MonoBehaviour
         {
             SceneManager.LoadScene("Lose_Radiation");
         }
+        else if(strike == 3)
+        {
+            SceneManager.LoadScene("StrikeOut");
+        }
 
     }
 
