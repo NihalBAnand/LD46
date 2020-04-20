@@ -11,7 +11,7 @@ public class DashController : MonoBehaviour
 {
     //constants for no hardcoding lol
     public float HourLength = 5f; // CHANGE TO 5 FOR FINAL DEPLOY
-    private const int MaxMoney = 999;
+    private const int MaxMoney = 999000;
 
     //Stats
     public int money = 0;
