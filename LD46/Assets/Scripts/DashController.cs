@@ -38,6 +38,7 @@ public class DashController : MonoBehaviour
     public int numEvents = 4;
     public int News = 0;
     public int maxTemp = 500;
+    public int dispExcessStorage = 0;
 
 
     //time
@@ -195,8 +196,9 @@ public class DashController : MonoBehaviour
 
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
-
-        batteryVal.text = Math.Round(((float)excessStorage / 1000), 1).ToString();
+        if (KwH > dailyPowerUse) dispExcessStorage = excessStorage + (KwH - dailyPowerUse);
+        if (dispExcessStorage > storageCapacity) dispExcessStorage = storageCapacity;
+        batteryVal.text = Math.Round(((float)dispExcessStorage / 1000), 1).ToString();
         calText.text = day.ToString();
 
         //SHOP
@@ -219,10 +221,9 @@ public class DashController : MonoBehaviour
         radDial.transform.rotation = Quaternion.Euler(0, 0, radRotation);
 
         water.rectTransform.sizeDelta = new Vector2(100, 100 *((float)waterLevel / (float)MaxWater));
-
         Debug.Log((float)excessStorage / (float)storageCapacity);
 
-        battery.rectTransform.sizeDelta = new Vector2(100, 400 * ((float)excessStorage / (float)storageCapacity));
+        battery.rectTransform.sizeDelta = new Vector2(100, 400 * ((float)dispExcessStorage / (float)storageCapacity));
 
         if (time >= 24)
         {
@@ -326,7 +327,7 @@ public class DashController : MonoBehaviour
         else if(dailyPowerUse>KwH)
         {
             strike += 1;
-            money += (priceOfPower + 10) * (KwH);
+            money += (priceOfPower+10) * (KwH);
         }
         else
         {
