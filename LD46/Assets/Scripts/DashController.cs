@@ -21,8 +21,8 @@ public class DashController : MonoBehaviour
     public int radiation = 0;
     public int temp = 150;
     public int population = 100;
-    public int popIncRate = 10;
-    public int popIncFreq = 3;
+    public int popIncRate = 15;
+    public int popIncFreq = 1;
     public int dailyPowerUse;
     public int waterLevel = 90;
     public int MaxWater = 100;
