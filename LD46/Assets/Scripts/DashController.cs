@@ -472,8 +472,8 @@ public class DashController : MonoBehaviour
         if (money >= waterP)
         {
             money -= waterP;
-            waterP += 20;
-            MaxWater += 20;
+            waterP += 20000;
+            MaxWater += 20000;
         }
     }
 
@@ -492,8 +492,8 @@ public class DashController : MonoBehaviour
         if (money >= heatP)
         {
             money -= heatP;
-            heatP += 20;
-            maxTemp += 50;
+            heatP += 2000;
+            maxTemp += 5000;
         }
     }
 
@@ -502,8 +502,8 @@ public class DashController : MonoBehaviour
         if (money >= radP)
         {
             money -= radP;
-            radP += 20;
-            maxRads += 25;
+            radP += 20000;
+            maxRads += 25000;
         }
     }
 
@@ -512,7 +512,7 @@ public class DashController : MonoBehaviour
         if (money >= rodP)
         {
             money -= rodP;
-            rodP += 20;
+            rodP += 20000;
             percentDecrease -= 0.1f;
         }
     }
