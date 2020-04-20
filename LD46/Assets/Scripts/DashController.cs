@@ -189,9 +189,9 @@ public class DashController : MonoBehaviour
         }
         SliderPower();
         rods.text = rodInUse.ToString();
-        moneyVal.text = (money/1000).ToString();
+        moneyVal.text = Math.Round((double)((float)money / 1000), 1).ToString();
 
-        shopMoney.text = (money/1000).ToString() + "k";
+        shopMoney.text = Math.Round((double)((float)money/1000), 1).ToString() + "k";
 
         tempVal.text = temp.ToString();
         KwHTodayVAl.text = Math.Round((double)dailyPowerUse / 1000, 1).ToString();
@@ -199,6 +199,7 @@ public class DashController : MonoBehaviour
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
         if (KwH > dailyPowerUse) dispExcessStorage = excessStorage + (KwH - dailyPowerUse);
+        else dispExcessStorage = excessStorage;
         if (dispExcessStorage > storageCapacity) dispExcessStorage = storageCapacity;
         batteryVal.text = Math.Round(((float)dispExcessStorage / 1000), 1).ToString();
         calText.text = day.ToString();
@@ -524,8 +525,8 @@ public class DashController : MonoBehaviour
     }
     public void SellPower()
     {
-        money += Mathf.RoundToInt(((float)priceOfPower/10) * excessStorage * Sell.value);
-        excessStorage -= Mathf.RoundToInt(excessStorage * Sell.value);
+        money += Mathf.RoundToInt((float)(((float)priceOfPower/10) * excessStorage * Sell.value));
+        excessStorage -= Mathf.RoundToInt((float)excessStorage * Sell.value);
         if (excessStorage == 1) excessStorage = 0;
     }
 
