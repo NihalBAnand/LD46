@@ -37,6 +37,7 @@ public class DashController : MonoBehaviour
     public int KwH = 0;
     public int numEvents = 4;
     public int News = 0;
+    public int maxTemp = 500;
 
 
     //time
@@ -53,61 +54,6 @@ public class DashController : MonoBehaviour
     public bool paused = false;
     public bool shopping = false;
 
-    /*
-    //Number sprites for digits
-    public Sprite num0;
-    public Sprite num1;
-    public Sprite num2;
-    public Sprite num3;
-    public Sprite num4;
-    public Sprite num5;
-    public Sprite num6;
-    public Sprite num7;
-    public Sprite num8;
-    public Sprite num9;
-    private List<Sprite> nums = new List<Sprite>();
-    */
-
-    /*
-    //Clock sprites
-    public GameObject ClockDigit1;
-    public GameObject ClockDigit2;
-    private SpriteRenderer CD1;
-    private SpriteRenderer CD2;
-    
-    
-    //Money Sprites
-    public GameObject MoneyDigit1;
-    public GameObject MoneyDigit2;
-    public GameObject MoneyDigit3;
-    private SpriteRenderer MD1;
-    private SpriteRenderer MD2;
-    private SpriteRenderer MD3;
-
-    //Temperature Sprites
-    public GameObject TempDigit1;
-    public GameObject TempDigit2;
-    public GameObject TempDigit3;
-    private SpriteRenderer TD1;
-    private SpriteRenderer TD2;
-    private SpriteRenderer TD3;
-
-    //Kilowatt-Hours Sprites
-    public GameObject KwDigit1;
-    public GameObject KwDigit2;
-    public GameObject KwDigit3;
-    private SpriteRenderer Kw1;
-    private SpriteRenderer Kw2;
-    private SpriteRenderer Kw3;
-
-    //Percent Sprites
-    public GameObject PercentDigit1;
-    public GameObject PercentDigit2;
-    public GameObject PercentDigit3;
-    private SpriteRenderer PD1;
-    private SpriteRenderer PD2;
-    private SpriteRenderer PD3;
-    */
     public Text rods;
     public Text KwHval;
     public Text PercentVal;
@@ -130,6 +76,17 @@ public class DashController : MonoBehaviour
     public Image battery;
 
     public GameObject shop;
+    public Text SWater;
+    public Text SBatt;
+    public Text SHeat;
+    public Text SRad;
+    public Text SRod;
+
+    public int waterP = 30;
+    public int battP = 30;
+    public int heatP = 30;
+    public int radP = 30;
+    public int rodP = 30;
 
     //Reactor Sprites
     public Image reactor;
@@ -145,20 +102,6 @@ public class DashController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        //init <digit sprites> list
-        nums.Add(num0);
-        nums.Add(num1);
-        nums.Add(num2);
-        nums.Add(num3);
-        nums.Add(num4);
-        nums.Add(num5);
-        nums.Add(num6);
-        nums.Add(num7);
-        nums.Add(num8);
-        nums.Add(num9);
-        */
-
         //init <reactor states> list
         states.Add(state0);
         states.Add(state1);
@@ -167,36 +110,6 @@ public class DashController : MonoBehaviour
         states.Add(state4);
         states.Add(state5);
 
-        /*<--Start UI inits
-
-        //clock
-        CD1 = ClockDigit1.GetComponent<SpriteRenderer>();
-        CD2 = ClockDigit2.GetComponent<SpriteRenderer>();
-
-        //money
-        MD1 = MoneyDigit1.GetComponent<SpriteRenderer>();
-        MD2 = MoneyDigit2.GetComponent<SpriteRenderer>();
-        MD3 = MoneyDigit3.GetComponent<SpriteRenderer>();
-
-        //temperature
-        TD1 = TempDigit1.GetComponent<SpriteRenderer>();
-        TD2 = TempDigit2.GetComponent<SpriteRenderer>();
-        TD3 = TempDigit3.GetComponent<SpriteRenderer>();
-
-        //kilowatt-hours
-        Kw1 = KwDigit1.GetComponent<SpriteRenderer>();
-        Kw2 = KwDigit2.GetComponent<SpriteRenderer>();
-        Kw3 = KwDigit3.GetComponent<SpriteRenderer>();
-
-        //percent
-        PD1 = PercentDigit1.GetComponent<SpriteRenderer>();
-        PD2 = PercentDigit2.GetComponent<SpriteRenderer>();
-        PD3 = PercentDigit3.GetComponent<SpriteRenderer>();
-
-        
-        
-
-        */
         dailyPowerUse = population * 24;
 
         rods.text = rodInUse.ToString();
@@ -207,12 +120,6 @@ public class DashController : MonoBehaviour
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
         newsText.text = "Study proves that math is related to science";
-
-        //radDial.transform.rotation
-
-
-
-
 
         //DO LAST NO MATTER WHAT
         //I MEAN IT
@@ -243,6 +150,14 @@ public class DashController : MonoBehaviour
         batteryVal.text = Math.Round(((float)excessStorage / 1000), 1).ToString();
         calText.text = day.ToString();
 
+        //SHOP
+        SWater.text = waterP.ToString();
+        SBatt.text = battP.ToString();
+        SHeat.text = heatP.ToString();
+        SRad.text = radP.ToString();
+        SRod.text = rodP.ToString();
+
+
         radRotation = 180 * ((float)radiation / (float)maxRads);
         if (radRotation >= 90)
         {
@@ -259,22 +174,6 @@ public class DashController : MonoBehaviour
         Debug.Log((float)excessStorage / (float)storageCapacity);
 
         battery.rectTransform.sizeDelta = new Vector2(100, 400 * ((float)excessStorage / (float)storageCapacity));
-
-        /*
-        dispKwh = KwH;
-        dispKwh =(float) Math.Round((double)(dispKwh / 1000), 3);
-        KwHval.text = dispKwh.ToString();
-        <--Start reactor debug
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            state += 1;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            state -= 1;
-
-        if (state < 0)
-            state = 0;
-        if (state > 5)
-            state = 5;
-        //End reactor debug -->*/
 
         if (time >= 24)
         {
@@ -304,36 +203,6 @@ public class DashController : MonoBehaviour
         if (waterLevel < 0)
             waterLevel = 0;
 
-        /*<-- Start UI display logic
-
-        //clock
-        CD1.sprite = nums[Mathf.RoundToInt(time / 10)];
-        CD2.sprite = nums[time % 10];
-
-        //reactor
-        
-
-        //money
-        MD1.sprite = nums[Mathf.RoundToInt(money / 100)];
-        MD2.sprite = nums[Mathf.RoundToInt((money % 100) / 10)];
-        MD3.sprite = nums[money % 10];
-
-        //temperature
-        TD1.sprite = nums[Mathf.RoundToInt(temp / 100)];
-        TD2.sprite = nums[Mathf.RoundToInt((temp % 100) / 10)];
-        TD3.sprite = nums[temp % 10];
-
-        //kilowatt-hours
-        Kw1.sprite = nums[Mathf.RoundToInt(KwH / 100)];
-        Kw2.sprite = nums[Mathf.RoundToInt((KwH % 100) / 10)];
-        Kw3.sprite = nums[KwH % 10];
-
-        //percent
-        PD1.sprite = nums[Mathf.RoundToInt(percent / 100)];
-        PD2.sprite = nums[Mathf.RoundToInt((percent % 100) / 10)];
-        PD3.sprite = nums[percent % 10];
-
-        //End UI display logic -->*/
         if (shopping)
         {
             shop.SetActive(true);
@@ -365,7 +234,6 @@ public class DashController : MonoBehaviour
         dailyPowerUse = population * 24;
         time = 0;
         day += 1;
-        //radiation = 0;
         KwHTodayVAl.text = dailyPowerUse.ToString();
         updateEvent();
         shopping = true;
@@ -452,7 +320,7 @@ public class DashController : MonoBehaviour
         {
             SceneManager.LoadScene("Lose_Meltdown");
         }
-        else if(temp > 499)
+        else if(temp >= maxTemp)
         {
             SceneManager.LoadScene("Lose_Temperature");
         }
@@ -477,13 +345,6 @@ public class DashController : MonoBehaviour
             temp += Mathf.RoundToInt((MaxWater - waterLevel) / 3);
         else
             temp -= 5;
-
-        //efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
-
-        //percent = Mathf.RoundToInt((float)Math.Pow(2.15,(controlRods - rodInUse)));
-        
-    
-
 
         efficiency = Mathf.RoundToInt((float)Math.Pow(controlRods - rodInUse, 2));
         percent = Mathf.RoundToInt((float)Math.Pow((controlRods - rodInUse), percentDecrease));
@@ -523,6 +384,7 @@ public class DashController : MonoBehaviour
         KwH += powerGain;
         if (flushState < 1)
             radiation += 5;
+
         //TextUpdates
         dispKwh = KwH;
         dispKwh = (float)Math.Round(((double)dispKwh / 1000), 1);
@@ -531,9 +393,9 @@ public class DashController : MonoBehaviour
         tempVal.text = temp.ToString();
         if (speedstate > 0)
         {
-            HourLength = 5;
+            HourLength = 5f;
         }
-        else HourLength = 3f;
+        else HourLength = .5f;
 
     }
 
@@ -561,4 +423,54 @@ public class DashController : MonoBehaviour
         speedstate *= -1;
     }
 
+
+    public void BuyWater()
+    {
+        if (money >= waterP)
+        {
+            money -= waterP;
+            waterP += 20;
+            MaxWater += 20;
+        }
+    }
+
+    public void BuyBatt()
+    {
+        if (money >= battP)
+        {
+            money -= battP;
+            battP += 20;
+            storageCapacity += 10000;
+        }
+    }
+
+    public void BuyHeat()
+    {
+        if (money >= heatP)
+        {
+            money -= heatP;
+            heatP += 20;
+            maxTemp += 50;
+        }
+    }
+
+    public void BuyRad()
+    {
+        if (money >= radP)
+        {
+            money -= radP;
+            radP += 20;
+            maxRads += 25;
+        }
+    }
+
+    public void BuyRod()
+    {
+        if (money >= rodP)
+        {
+            money -= rodP;
+            rodP += 20;
+            percentDecrease -= 0.1f;
+        }
+    }
 }
