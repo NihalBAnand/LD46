@@ -88,11 +88,11 @@ public class DashController : MonoBehaviour
     public Text SRad;
     public Text SRod;
 
-    public int waterP = 30;
-    public int battP = 30;
-    public int heatP = 30;
-    public int radP = 30;
-    public int rodP = 30;
+    public int waterP = 30000;
+    public int battP = 30000;
+    public int heatP = 30000;
+    public int radP = 30000;
+    public int rodP = 30000;
 
     //dash board sprites
     public Image strikeboard;
@@ -191,7 +191,7 @@ public class DashController : MonoBehaviour
         rods.text = rodInUse.ToString();
         moneyVal.text = (money/1000).ToString();
 
-        shopMoney.text = (money/1000).ToString();
+        shopMoney.text = (money/1000).ToString() + "k";
 
         tempVal.text = temp.ToString();
         KwHTodayVAl.text = Math.Round((double)dailyPowerUse / 1000, 1).ToString();
@@ -204,11 +204,11 @@ public class DashController : MonoBehaviour
         calText.text = day.ToString();
 
         //SHOP
-        SWater.text = waterP.ToString();
-        SBatt.text = battP.ToString();
-        SHeat.text = heatP.ToString();
-        SRad.text = radP.ToString();
-        SRod.text = rodP.ToString();
+        SWater.text = (waterP/1000).ToString() + "k";
+        SBatt.text = (battP/1000).ToString() + "k";
+        SHeat.text = (heatP/1000).ToString() + "k";
+        SRad.text = (radP/1000).ToString() + "k";
+        SRod.text = (rodP/1000).ToString() + "k";
 
 
         radRotation = 180 * ((float)radiation / (float)maxRads);
@@ -473,7 +473,7 @@ public class DashController : MonoBehaviour
         {
             money -= waterP;
             waterP += 20000;
-            MaxWater += 20000;
+            MaxWater += 20;
         }
     }
 
@@ -482,7 +482,7 @@ public class DashController : MonoBehaviour
         if (money >= battP)
         {
             money -= battP;
-            battP += 20;
+            battP += 20000;
             storageCapacity += 10000;
         }
     }
@@ -492,8 +492,8 @@ public class DashController : MonoBehaviour
         if (money >= heatP)
         {
             money -= heatP;
-            heatP += 2000;
-            maxTemp += 5000;
+            heatP += 20000;
+            maxTemp += 500;
         }
     }
 
@@ -503,7 +503,7 @@ public class DashController : MonoBehaviour
         {
             money -= radP;
             radP += 20000;
-            maxRads += 25000;
+            maxRads += 25;
         }
     }
 
