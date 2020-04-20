@@ -51,6 +51,7 @@ public class DashController : MonoBehaviour
 
     //flow control
     public bool paused = false;
+    public bool shopping = false;
 
     /*
     //Number sprites for digits
@@ -116,6 +117,7 @@ public class DashController : MonoBehaviour
     public Text KwHTodayVAl;
     public Text batteryVal;
     public Text moneyVal;
+    public Text shopMoney;
 
     public Text newsText;
     public Text calText;
@@ -126,6 +128,8 @@ public class DashController : MonoBehaviour
     public Image water;
 
     public Image battery;
+
+    public GameObject shop;
 
     //Reactor Sprites
     public Image reactor;
@@ -228,6 +232,8 @@ public class DashController : MonoBehaviour
         rods.text = rodInUse.ToString();
         moneyVal.text = money.ToString();
 
+        shopMoney.text = money.ToString();
+
         tempVal.text = temp.ToString();
         KwHTodayVAl.text = Math.Round((double)dailyPowerUse / 1000, 1).ToString();
 
@@ -328,6 +334,11 @@ public class DashController : MonoBehaviour
         PD3.sprite = nums[percent % 10];
 
         //End UI display logic -->*/
+        if (shopping)
+        {
+            shop.SetActive(true);
+            
+        }
     }
 
     public void Flush()
@@ -352,6 +363,7 @@ public class DashController : MonoBehaviour
         //radiation = 0;
         KwHTodayVAl.text = dailyPowerUse.ToString();
         updateEvent();
+        shopping = true;
         paused = false;
         if (day % 7 == 0)
         {
@@ -359,6 +371,11 @@ public class DashController : MonoBehaviour
             UpdateNews();
         }
         
+    }
+
+    public void DoneShopping()
+    {
+        shopping = false;
     }
 
     private void UpdateNews()
