@@ -23,7 +23,7 @@ public class DashController : MonoBehaviour
     public int population = 100;
     public int popIncRate = 15;
     public int popIncFreq = 1;
-    public int dailyPowerUse;
+    public int dailyPowerUse = 2400;
     public int waterLevel = 90;
     public int MaxWater = 100;
     public int controlRods = 6;
@@ -320,10 +320,11 @@ public class DashController : MonoBehaviour
         if(dailyPowerUse<KwH)
         {
             excessStorage += (KwH - dailyPowerUse);
+            money += (priceOfPower) * (dailyPowerUse);
             if (excessStorage > storageCapacity)
             {
                 excessStorage = storageCapacity;
-                money += (priceOfPower) * (dailyPowerUse);
+                
             }
             money += 10;
         }
