@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StrikeOut.unity
     guid: cd13ab7435d9f664aa368ef0da0da9ca
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: d412a07926810a04ca2e0815d2790b53
   m_configObjects: {}
