@@ -1302,7 +1302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Go back
 --- !u!222 &391410916
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2533,8 +2533,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.642, y: -1242.1144}
-  m_SizeDelta: {x: 768.71643, y: 2976.082}
+  m_AnchoredPosition: {x: -18.4, y: -1242.1144}
+  m_SizeDelta: {x: 737.823, y: 2976.082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886079768
 MonoBehaviour:
@@ -2567,72 +2567,103 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "fSCHEDULE (SUBJECT TO CHANGE (OBVIOUSLY))\r\nFriday - 8p-11p: Idea\r\nSaturday
-    - 8a-4p: Prototype\r\nSaturday - 4p-4a: regret life choices and convert prototype
-    to the final game \r\nSunday - 4a-12p: finish 90% of the final game\r\nSunday
-    - 12p-12a: polish and debug and music and finish the goddamn game\r\nMonday -
-    10a-4p: Furiously debug and polish and music\r\nMonday - 4p-8p: Freak out as
-    we debug and find 10 million things to fix and fix them one by one\r\nMonday
-    - 8p: Submission hour\r\n\r\nBARE MINIMUM GAME\r\nControls\r\nLose condition\r\nWin
-    condition\r\nIF YOUR IDEA DOESN\u2019T HAVE THESE YOUR IDEA ISN\u2019T A GAME\r\n\r\nA
-    nuclear reactor is running and you have to keep it going without it melting down
-    (spaceteam-ish) - Nihal\u2019s + Anish Favorite\r\nUI is mostly designed (keep
-    in mind)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nNuclear power
-    plant design\r\nMechanics list:\r\nPanel\r\nTime (hour/day system?) - game updates
-    at each integral\r\nStats\r\nRads\r\nWater level (%)\r\nEnergy output - Kw/H\r\nMeltdown
-    chance (%)\r\nTemperature (\xB0C)\r\nEfficiency\r\nVolatility\r\nMoney - buying
-    more panel items(?), upgrading reactor, etc\r\nEarned at the end of each day\r\nPassive
-    income\r\nMoney from power\r\nEvents - heat wave, cold front, the new company
-    opens, etc\r\nHourly (maybe)\r\nDay-specific events?\r\nSecond reactor - low
-    priority\r\nHigh temp -> high evaporation speed ->high kw/h\r\nLess control rods
-    -> higher temp; higher rads; higher meltdown risk\r\nRads passively increase\r\nMinimum
-    energy requirement\r\nPassively increases\r\nIncreases from events\r\nPenalties
-    if not met\r\n3 strikes and you\u2019re fired\r\nYou lose your passive money\r\nEnergy
-    money decreased\r\nTemp passive increase\r\nLow water level = higher increase\r\nPanel
-    options - descriptions in tooltips:\r\nStartup reactions - start round (lever)\r\nAdd
-    cool water - adds more water if under max water and lowers reactor temp\r\nInsert/remove
-    control rods - increases/decreases risk of meltdown, increases/decreases output
-    (0-9)\r\nFlush water - sets to 0 rads, greatly increases meltdown risk for 2
-    hours, sets water level to max\r\nShutdown reactor - no risk, done for the day,
-    lose $250\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nCHANGE
-    CLOCK TO <30 SECONDS> BEFORE SUBMISSION\r\nART\r\nReactor states (heat, crack,
-    etc)\r\nDashboard\r\nAlarm clock states - 0-9, %, \xB0C\r\nMetallic background\r\nPanel
-    options (outlined above)\r\nClock with times (will this be alarm clock or analog?
-    Idk but make both)\r\nWater gauge\r\nMoney icon\r\nEvent pop-up\r\nFont\r\nArt
-    to Change:\r\nLever\r\nPlacement of Flush \r\nWater level\r\n\r\n\r\nIntro to
-    the game:\r\nYou are the manager in charge of a bustling growing town\u2019s
-    only electricity source. You are tasked with making sure that your generator
-    remains profitable without destroying the town. Remember: stay calm, be rational,
-    and you just might live through the day.\r\n\r\n\r\n\r\n\r\n\r\nEvents:\r\nHeat
-    Wave:\r\nGlobal warming at its finest it becomes harder to cool your reactor.\r\nCold
-    Front:\r\nThe town suddenly need more power to heat their homes because of an
-    unexpected cold front\r\nGold Rush?:\r\nIt seems someone found gold in the town
-    but it was a false alarm. Nevertheless, due to the influx of visitors, the next
-    3 days require double the power\r\nPopulation Boom:\r\nThe population increased
-    by .08 %(change later) there is a sudden increase in power consumption.\r\nSurprise
-    Inspection:\r\nInspectors find rats in your facility and you are forced to pay
-    a fine.\r\n\r\n\r\n\r\n\r\n\r\n\r\nArt priority:\r\nPanel\r\nLayout fixes\r\nDashboard
-    items & fixes\r\nEverything else\r\n\r\nShop items\r\nImproved control rods\r\nMaximum
-    water\r\nImproved battery capacity\r\nBetter radiation control\r\nBetter heat
-    control\r\n\r\nStats events can change:\r\nTemp or permanent\r\nMoney\r\nPopulation\r\nDuration\r\nText\r\nWater\r\n\r\n\r\nNukeCorp.
-    React-o-magic\u2122 Operator\u2019s Manual\r\nWelcome to the team! NukeCorp values
-    its reactor operators greatly, and we appreciate your willingness to work for
-    us, given, you know, the incident\u2026\r\nAnyway, you\u2019ve just arrived at
-    work. You\u2019re sitting in front of that dashboard and seeing all those dials
-    and buttons and whatnot, and don\u2019t know what to do. Luckily for you, this
-    manual, provided by NukeCorp, contains all of the knowledge you need to effectively,
-    and, most importantly, safely operate the React-o-magic\u2122 nuclear power plant.\r\n\r\nContents:\r\n1-1:
-    Statistics and you\r\n1-2: KwH produced\r\n1-2: Chance of meltdown\r\n1-3: Reactor
-    temperature.\r\n1-4: Radiation\r\n1-5: Clock\r\n1-6: Power quota\r\n2-1: Your
-    options\r\n2-2: Water gauge\r\n2-2a: Add cold water\r\n2-3: Reactor status\r\n2-4:
-    Flush reactor water\r\n2-5: Fast-forward time\r\n2-6: Calendar\r\n2-7: Control
-    rods\r\n2-8: Money\r\n2-9: Strikes\r\n2-10: News\r\n3-1: Excess storage capacity\r\n\r\n1-1:
-    Statistics and You\r\nSection one is about the various reactor statistics seen
-    on the left side of the panel. NukeCorp provides several metrics with which any
-    knowledgeable manager should be able to succeed (looking at you, Steve from reactor
-    7).\r\n\r\n1-2: KwH Produced\r\nThe first metric from the top is Kilowatt-hours
-    produced. This is a total for the day, measured in thousands of kilowatt-hours. 
-    \r\n"
+  m_Text: "NukeCorp. React-o-magic\u2122 Operator\u2019s Manual\r\n=====================================\nWelcome
+    to the team! NukeCorp values its reactor operators greatly, and we appreciate
+    your willingness to work for us, given, you know, the incident\u2026\r\nAnyway,
+    you\u2019ve just arrived at work. You\u2019re sitting in front of that dashboard
+    and seeing all those dials and buttons and whatnot, and don\u2019t know what
+    to do. Luckily for you, this manual, provided by NukeCorp, contains all of the
+    knowledge you need to effectively, and, most importantly, safely operate the
+    React-o-magic\u2122 nuclear power plant.\r\n\r\nContents:\r\n1-1: Statistics
+    and you\r\n1-2: KwH produced\r\n1-3: Chance of meltdown\r\n1-4: Reactor temperature.\r\n1-5:
+    Radiation\r\n1-6: Clock\r\n1-7: Power quota\r\n2-1: Your options\r\n2-2: Water
+    gauge\r\n2-2a: Add cold water\r\n2-3: Reactor status\r\n2-4: Flush reactor water\r\n2-5:
+    Fast-forward time\r\n2-6: Calendar\r\n2-7: Control rods\r\n2-8: Money\r\n2-9:
+    Strikes\r\n2-10: News\r\n3-1: Excess storage capacity\r\n4-1: Shop\r\n4-2: Increase
+    water capacity\r\n4-3: Increase battery storage\r\n4-4: Improved heat control\r\n4-5:
+    Improved radiation control\r\n4-6: Improved control rods\r\n4-7: Sell excess
+    electricity\r\n\r\n1-1: Statistics and You\r\nSection one is about the various
+    reactor statistics seen on the left side of the panel. NukeCorp provides several
+    metrics with which any knowledgeable manager should be able to succeed (looking
+    at you, Steve from reactor 7).\r\n\r\n\r\n1-2: KwH Produced\r\nThe first metric
+    from the top is Kilowatt-hours produced. This is a total for the day, measured
+    in thousands of kilowatt-hours. You want this to be the highest you can get it.
+    Do this by increasing reactor temperature and efficiency.\r\n\r\n1-3: Chance
+    of Meltdown\r\nThe second metric is the percent chance of meltdown. You want
+    this AS LOW AS POSSIBLE. WE CANNOT AFFORD ANOTHER LAWSUIT. PLEASE. Increase/lower
+    this by removing/adding control rods.\r\n\r\n1-4: Reactor Temperature\r\nThe
+    third metric is the reactor temperature, measured in degrees Celsius. A TEMPERATURE
+    ABOVE 500 DEGREES WILL RESULT IN REACTOR FAILURE. Lower reactor temperature by
+    keeping water levels high. Increase reactor temperature by keeping water levels
+    low. A higher temperature will result in higher energy production.\r\n\r\n1-5:
+    Radiation\r\nThe fourth metric is reactor radiation levels, measured in rads.
+    RADIATION LEVELS ABOVE THE MAXIMUM WILL RESULT IN REACTOR FAILURE. Reset radiation
+    to zero by flushing reactor water.\r\n\r\n1-6: Clock\r\nNukeCorp provides a clock
+    to each employee. Reactor statistics update every hour. The day is over after
+    hour 24.\r\n\r\n1-7: Power Production Quota\r\nNukeCorp requires a certain amount
+    of electricity production per day to supply the towns nearby. If this quota is
+    not met, the operator of the plant will be issued a strike. IF AN OPERATOR EARNS
+    THREE STRIKES, THEY WILL BE FIRED, JUST LIKE STEVE AT REACTOR 7.\r\n\r\n2-1:
+    Your Options\r\nIn the center-middle of your panel, there are several actions
+    you can take at any point, outlined in section 2. These actions will affect the
+    statistics in the ways outlined in section 1. These options should be enough
+    to run the reactor safely (Steve).\r\n\r\n2-2: Water Gauge\r\nTowards the left
+    of the panel, there is a blue gauge. This is your water gauge. It reflects the
+    amount of water in your reactor. It passively decreases, in addition to expedited
+    evaporation due to high reactor temperatures.\r\n\t2-2a: Add Cold Water\r\nTo
+    the right of the water gauge, there is a button. This adds cold water to the
+    reactor, raising water levels and decreasing temperature.\r\n2-3: Reactor Status\r\nIn
+    the center of your panel, there is a small model of a reactor. This will reflect
+    the current status of the reactor according to the following codes:\r\n-Normal
+    color and no cracks: No issues; running as normal\r\n-Cracks but normal color:
+    Radiation levels high. Flush soon.\r\n-Cracks with ooze but normal color: Radiation
+    levels extremely high. Flush immediately.\r\n-Reddish color but no cracks: Reactor
+    is hot but is not in danger. Consider adding water if possible.\r\n-Reddish color
+    with cracks: Reactor is close to overheating. Add water very soon.\r\n-Reddish
+    color with cracks and ooze: -Reactor is overheating. Add water immediately or
+    it will explode.\r\n\r\n2-4: Flush Reactor Water\r\nThere is a red button below
+    the water gauge on your panel. Press it to flush the reactor water and replace
+    it. This resets radiation levels, sets water level to maximum, and increases
+    meltdown chance by 10% for 2 hours.\r\n\r\n2-5: Fast-Forward Time\r\nThere is
+    a fast-forward icon to the bottom-right of your panel. Press it to speed up time.
+    A green light will indicate time is sped up. There is no penalty for doing this.\r\n\r\n2-6:
+    Calendar\r\nTo the bottom-right of your panel, there is a calendar with a red
+    date. Your job is to manage the reactor for 28 days. Good luck. Hopefully you
+    last longer than Steve from reactor 7. \r\n\r\n2-7: Control Rods\r\nThere is
+    a screen to the upper-right of your panel that displays a blue number and two
+    buttons to the left and right. The number is the number of control rods in use
+    (maximum of 6), the button to the left removes control rods, and the button to
+    the right adds them. Removing control rods increases the meltdown chance at an
+    exponential rate.\r\n\r\n2-8: Money\r\nTo the upper-left of your panel is a tab
+    with a green dollar sign and a green number. This number is the amount of money
+    (in thousands of dollars) currently at your disposal. You can gain money by fulfilling
+    the quota as well as selling excess power in your storage. The money can be used
+    in the shop at the end of each day to buy upgrades for your reactor.\r\n\r\n2-9:
+    Strikes\r\nIn the upper-left of your panel, below the money, is your strikes.
+    Remember, you get a strike if you don\u2019t meet the quota for the day, and
+    if you get three strikes you get fired. Don\u2019t be like Steve. Seriously.
+    We need this reactor to stay online for more than a week.\r\n\r\n\r\n2-10: News\r\nIn
+    the tab above the main part of your panel marked \u201CNews\u201D is where the
+    weekly news is displayed. It\u2019s important to stay notified of the goings-on,
+    after all.\r\n\r\n3-1: Excess Storage Capacity\r\nIn the screen to the right
+    of the main panel marked \u201CExcess Storage\u201D is where your excess power
+    storage is displayed. This power can be sold in the shop or saved for a day when
+    you might not meet quota otherwise. Choose wisely.\r\n\r\n4-1: Shop\r\nAt the
+    end of each day, you can buy upgrades in the shop with money you have made, as
+    well as sell excess power in your storage.\r\n\r\n4-2: Increase Water Capacity\r\nYou
+    can buy an increased water capacity in the shop. Each purchase adds 20 gigalitres
+    to the reactor tank, you have more time of efficient energy production before
+    you have to refill.\r\n\r\n4-3: Increase Battery Capacity\r\nYou can buy an increased
+    battery capacity in the shop. Each purchase adds 10k KwH to the battery capacity.\r\n\r\n4-4:
+    Improved Heat Control\r\nYou can buy an improvement to heat control in the shop.
+    Each purchase adds 50 degrees to the temperature at which the reactor will explode.\r\n\r\n4-5:
+    Improved Radiation Control\r\nYou can buy an improvement to radiation control
+    in the shop. Each purchase adds 25 rads to the radiation level at which the reactor
+    will cease functioning.\r\n\r\n4-6: Improved Control Rods\r\nYou can buy an improvement
+    to your control rods in the shop. Each purchase will decrease the rate at which
+    removing rods will increase meltdown chance.\r\n\r\n4-7: Selling Excess Energy\r\nYou
+    can sell excess energy in the shop. The standard rate for electricity sale is
+    one-tenth of what you would get by using it in town.\r\n\r\n\r\n"
 --- !u!222 &886079769
 CanvasRenderer:
   m_ObjectHideFlags: 0
