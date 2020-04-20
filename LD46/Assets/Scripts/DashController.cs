@@ -154,7 +154,16 @@ public class DashController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Manual"); 
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+            foreach (GameObject go in allObjects)
+            {
+                if (go.activeInHierarchy)
+                { /* and any other logic you want. Maybe like !isTerrain */
+                    go.SetActive(false);
+                }
+            }
+            paused = true;
+            SceneManager.LoadScene("Manual");
         }
         if (speedstate<0)
         {
