@@ -54,6 +54,8 @@ public class DashController : MonoBehaviour
     public bool paused = false;
     public bool shopping = false;
 
+    public Text PowerValue;
+    public Slider Sell;
     public Text rods;
     public Text KwHval;
     public Text PercentVal;
@@ -162,6 +164,7 @@ public class DashController : MonoBehaviour
             shop.SetActive(false);
             paused = false;
         }
+        SliderPower();
         rods.text = rodInUse.ToString();
         moneyVal.text = money.ToString();
 
@@ -253,7 +256,6 @@ public class DashController : MonoBehaviour
         time = 0;
         day += 1;
         KwHTodayVAl.text = dailyPowerUse.ToString();
-        updateEvent();
         if (day>0) shopping = true;
         if (day % 7 == 0)
         {
@@ -287,11 +289,6 @@ public class DashController : MonoBehaviour
         {
             newsText.text = "High blood pressure cases spike as Ludum Dare deadline approaches";
         }
-    }
-
-    private void updateEvent()
-    {
-        
     }
 
     private void moneyfrompower()
@@ -495,5 +492,15 @@ public class DashController : MonoBehaviour
             rodP += 20;
             percentDecrease -= 0.1f;
         }
+    }
+
+    public void SliderPower()
+    {
+        PowerValue.text = (priceOfPower * excessStorage* Sell.value).ToString();
+    }
+    public void SellPower()
+    {
+        money += Mathf.RoundToInt(priceOfPower * excessStorage * Sell.value);
+        excessStorage -= Mathf.RoundToInt(excessStorage * Sell.value);
     }
 }
