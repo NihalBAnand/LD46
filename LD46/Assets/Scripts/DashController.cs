@@ -53,6 +53,7 @@ public class DashController : MonoBehaviour
     //flow control
     public bool paused = false;
     public bool shopping = false;
+    public bool manual = false;
 
     public Text PowerValue;
     public Slider Sell;
@@ -72,6 +73,8 @@ public class DashController : MonoBehaviour
 
     public GameObject radDial;
     public float radRotation = 90;
+
+    public GameObject manualO;
 
     public Image water;
 
@@ -109,17 +112,8 @@ public class DashController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-        foreach (GameObject go in allObjects)
-        {
-            if (go.activeInHierarchy)
-            { /* and any other logic you want. Maybe like !isTerrain */
-                UnityEngine.Object.DontDestroyOnLoad(go);
-            }
-        }
-
         shop.SetActive(false);
-
+        manualO.SetActive(false);
         //init <reactor states> list
         states.Add(state0);
         states.Add(state1);
@@ -152,18 +146,12 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-            foreach (GameObject go in allObjects)
-            {
-                if (go.activeInHierarchy)
-                { /* and any other logic you want. Maybe like !isTerrain */
-                    go.SetActive(false);
-                }
-            }
-            paused = true;
-            SceneManager.LoadScene("Manual");
+            GlobalController.Instance.manual = true;
+            
         }
         if (speedstate<0)
         {
@@ -177,9 +165,21 @@ public class DashController : MonoBehaviour
             shop.SetActive(true);
             paused = true;
         }
-        else
+        else if (!shopping)
         {
             shop.SetActive(false);
+        }
+        if (GlobalController.Instance.manual)
+        {
+            manualO.SetActive(true);
+            paused = true;
+        }
+        else if (!GlobalController.Instance.manual)
+        {
+            manualO.SetActive(false);
+        }
+        if (!(shopping) && !(GlobalController.Instance.manual))
+        {
             paused = false;
         }
         SliderPower();
@@ -520,5 +520,10 @@ public class DashController : MonoBehaviour
         money += Mathf.RoundToInt(priceOfPower * excessStorage * Sell.value);
         excessStorage -= Mathf.RoundToInt(excessStorage * Sell.value);
         if (excessStorage == 1) excessStorage = 0;
+    }
+
+    public void ManualBack()
+    {
+        GlobalController.Instance.manual = false;
     }
 }
