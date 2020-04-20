@@ -88,6 +88,11 @@ public class DashController : MonoBehaviour
     public int radP = 30;
     public int rodP = 30;
 
+    //dash board sprites
+    public Image strikeboard;
+    public Sprite strike1;
+    public Sprite strike2;
+    private List<Sprite> strikes = new List<Sprite>();
     //Reactor Sprites
     public Image reactor;
     public Sprite state0;
@@ -110,6 +115,9 @@ public class DashController : MonoBehaviour
         states.Add(state4);
         states.Add(state5);
 
+        //init dashboard
+        strikes.Add(strike1);
+        strikes.Add(strike2);
         dailyPowerUse = population * 24;
 
         rods.text = rodInUse.ToString();
@@ -199,6 +207,7 @@ public class DashController : MonoBehaviour
 
         if (percent > 100)
             percent = 100;
+        strikeboard.sprite = strikes[strike - 1];
         reactor.sprite = states[state];
         if (waterLevel < 0)
             waterLevel = 0;
