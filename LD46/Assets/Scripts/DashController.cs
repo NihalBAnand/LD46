@@ -271,6 +271,7 @@ public class DashController : MonoBehaviour
         moneyfrompower();
         if (day % popIncFreq == 0)
         {
+            popIncRate += 3;
             population += popIncRate;
             dailyPowerUse = population * 24;
         }
