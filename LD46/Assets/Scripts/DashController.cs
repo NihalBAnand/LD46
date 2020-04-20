@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class DashController : MonoBehaviour
 {
     //constants for no hardcoding lol
-    private float HourLength = 5f; // CHANGE TO 5 FOR FINAL DEPLOY
+    public float HourLength = 5f; // CHANGE TO 5 FOR FINAL DEPLOY
     private const int MaxMoney = 999;
 
     //Stats
