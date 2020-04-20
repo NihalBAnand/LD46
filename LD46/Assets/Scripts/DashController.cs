@@ -139,6 +139,10 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Manual"); ;
+        }
         if (speedstate<0)
         {
             fastforwardOn.SetActive(true);
