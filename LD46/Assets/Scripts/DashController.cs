@@ -434,7 +434,7 @@ public class DashController : MonoBehaviour
         {
             HourLength = 5f;
         }
-        else HourLength = .5f;
+        else HourLength = 3f;
 
     }
 
