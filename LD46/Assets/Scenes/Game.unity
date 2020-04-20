@@ -2634,32 +2634,33 @@ MonoBehaviour:
     buttons to the left and right. The number is the number of control rods in use
     (maximum of 6), the button to the left removes control rods, and the button to
     the right adds them. Removing control rods increases the meltdown chance at an
-    exponential rate.\r\n\r\n2-8: Money\r\nTo the upper-left of your panel is a tab
-    with a green dollar sign and a green number. This number is the amount of money
-    (in thousands of dollars) currently at your disposal. You can gain money by fulfilling
-    the quota as well as selling excess power in your storage. The money can be used
-    in the shop at the end of each day to buy upgrades for your reactor.\r\n\r\n2-9:
-    Strikes\r\nIn the upper-left of your panel, below the money, is your strikes.
-    Remember, you get a strike if you don\u2019t meet the quota for the day, and
-    if you get three strikes you get fired. Don\u2019t be like Steve. Seriously.
-    We need this reactor to stay online for more than a week.\r\n\r\n\r\n2-10: News\r\nIn
-    the tab above the main part of your panel marked \u201CNews\u201D is where the
-    weekly news is displayed. It\u2019s important to stay notified of the goings-on,
-    after all.\r\n\r\n3-1: Excess Storage Capacity\r\nIn the screen to the right
-    of the main panel marked \u201CExcess Storage\u201D is where your excess power
-    storage is displayed. This power can be sold in the shop or saved for a day when
-    you might not meet quota otherwise. Choose wisely.\r\n\r\n4-1: Shop\r\nAt the
-    end of each day, you can buy upgrades in the shop with money you have made, as
-    well as sell excess power in your storage.\r\n\r\n4-2: Increase Water Capacity\r\nYou
-    can buy an increased water capacity in the shop. Each purchase adds 20 gigalitres
-    to the reactor tank, you have more time of efficient energy production before
-    you have to refill.\r\n\r\n4-3: Increase Battery Capacity\r\nYou can buy an increased
-    battery capacity in the shop. Each purchase adds 10k KwH to the battery capacity.\r\n\r\n4-4:
-    Improved Heat Control\r\nYou can buy an improvement to heat control in the shop.
-    Each purchase adds 50 degrees to the temperature at which the reactor will explode.\r\n\r\n4-5:
-    Improved Radiation Control\r\nYou can buy an improvement to radiation control
-    in the shop. Each purchase adds 25 rads to the radiation level at which the reactor
-    will cease functioning.\r\n\r\n4-6: Improved Control Rods\r\nYou can buy an improvement
+    exponential rate and increases reactor efficiency.\r\n\r\n2-8: Money\r\nTo the
+    upper-left of your panel is a tab with a green dollar sign and a green number.
+    This number is the amount of money (in thousands of dollars) currently at your
+    disposal. You can gain money by fulfilling the quota as well as selling excess
+    power in your storage. The money can be used in the shop at the end of each day
+    to buy upgrades for your reactor.\r\n\r\n2-9: Strikes\r\nIn the upper-left of
+    your panel, below the money, is your strikes. Remember, you get a strike if you
+    don\u2019t meet the quota for the day, and if you get three strikes you get fired.
+    Don\u2019t be like Steve. Seriously. We need this reactor to stay online for
+    more than a week.\r\n\r\n\r\n2-10: News\r\nIn the tab above the main part of
+    your panel marked \u201CNews\u201D is where the weekly news is displayed. It\u2019s
+    important to stay notified of the goings-on, after all.\r\n\r\n3-1: Excess Storage
+    Capacity\r\nIn the screen to the right of the main panel marked \u201CExcess
+    Storage\u201D is where your excess power storage is displayed. This power can
+    be sold in the shop or saved for a day when you might not meet quota otherwise.
+    Choose wisely.\r\n\r\n4-1: Shop\r\nAt the end of each day, you can buy upgrades
+    in the shop with money you have made, as well as sell excess power in your storage.\r\n\r\n4-2:
+    Increase Water Capacity\r\nYou can buy an increased water capacity in the shop.
+    Each purchase adds 20 gigalitres to the reactor tank, you have more time of efficient
+    energy production before you have to refill.\r\n\r\n4-3: Increase Battery Capacity\r\nYou
+    can buy an increased battery capacity in the shop. Each purchase adds 10k KwH
+    to the battery capacity.\r\n\r\n4-4: Improved Heat Control\r\nYou can buy an
+    improvement to heat control in the shop. Each purchase adds 50 degrees to the
+    temperature at which the reactor will explode.\r\n\r\n4-5: Improved Radiation
+    Control\r\nYou can buy an improvement to radiation control in the shop. Each
+    purchase adds 25 rads to the radiation level at which the reactor will cease
+    functioning.\r\n\r\n4-6: Improved Control Rods\r\nYou can buy an improvement
     to your control rods in the shop. Each purchase will decrease the rate at which
     removing rods will increase meltdown chance.\r\n\r\n4-7: Selling Excess Energy\r\nYou
     can sell excess energy in the shop. The standard rate for electricity sale is
@@ -4837,7 +4838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00024414062}
+  m_AnchoredPosition: {x: 0, y: 0.00048828125}
   m_SizeDelta: {x: -136.6167, y: -88.16763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337971427
