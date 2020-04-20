@@ -355,7 +355,7 @@ public class DashController : MonoBehaviour
 
     private void GameOver()
     {
-        if (UnityEngine.Random.Range(1f, 100f) <= percent)
+        if ((int)UnityEngine.Random.Range(1f, 100f) <= percent)
         {
             SceneManager.LoadScene("Lose_Meltdown");
         }
