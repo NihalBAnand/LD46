@@ -2245,7 +2245,7 @@ MonoBehaviour:
   rodInUse: 5
   excessStorage: 0
   priceOfPower: 1
-  storageCapacity: 300
+  storageCapacity: 300000
   strike: 0
   powerGain: 0
   efficiency: 1

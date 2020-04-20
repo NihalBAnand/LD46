@@ -250,6 +250,8 @@ public class DashController : MonoBehaviour
 
         water.rectTransform.sizeDelta = new Vector2(100, 100 *((float)waterLevel / (float)MaxWater));
 
+        Debug.Log((float)excessStorage / (float)storageCapacity);
+
         battery.rectTransform.sizeDelta = new Vector2(100, 400 * ((float)excessStorage / (float)storageCapacity));
 
         /*
