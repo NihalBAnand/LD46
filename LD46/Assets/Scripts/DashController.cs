@@ -109,6 +109,15 @@ public class DashController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        foreach (GameObject go in allObjects)
+        {
+            if (go.activeInHierarchy)
+            { /* and any other logic you want. Maybe like !isTerrain */
+                UnityEngine.Object.DontDestroyOnLoad(go);
+            }
+        }
+
         shop.SetActive(false);
 
         //init <reactor states> list
@@ -145,7 +154,7 @@ public class DashController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Manual"); ;
+            SceneManager.LoadScene("Manual"); 
         }
         if (speedstate<0)
         {
@@ -166,9 +175,9 @@ public class DashController : MonoBehaviour
         }
         SliderPower();
         rods.text = rodInUse.ToString();
-        moneyVal.text = money.ToString();
+        moneyVal.text = (money/1000).ToString();
 
-        shopMoney.text = money.ToString();
+        shopMoney.text = (money/1000).ToString();
 
         tempVal.text = temp.ToString();
         KwHTodayVAl.text = Math.Round((double)dailyPowerUse / 1000, 1).ToString();
@@ -313,8 +322,7 @@ public class DashController : MonoBehaviour
             money += (priceOfPower) * (KwH);
             money += 10;
         }
-        money /= 1000;
-    }
+}
 
     IEnumerator Hour() 
     {
