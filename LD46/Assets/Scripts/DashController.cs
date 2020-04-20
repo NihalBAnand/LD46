@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class DashController : MonoBehaviour
 {
     //constants for no hardcoding lol
-    private float HourLength = 10f; // CHANGE TO 5 FOR FINAL DEPLOY
+    private float HourLength = 5f; // CHANGE TO 5 FOR FINAL DEPLOY
     private const int MaxMoney = 999;
 
     //Stats
@@ -198,7 +198,7 @@ public class DashController : MonoBehaviour
         rods.text = rodInUse.ToString();
 
         tempVal.text = temp.ToString();
-        KwHTodayVAl.text = dailyPowerUse.ToString();
+        KwHTodayVAl.text = Math.Round((double)dailyPowerUse / 1000, 1).ToString();
 
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
@@ -229,7 +229,7 @@ public class DashController : MonoBehaviour
         moneyVal.text = money.ToString();
 
         tempVal.text = temp.ToString();
-        KwHTodayVAl.text = dailyPowerUse.ToString();
+        KwHTodayVAl.text = Math.Round((double)dailyPowerUse / 1000, 1).ToString();
 
         PercentVal.text = percent.ToString();
         timeVal.text = time.ToString();
@@ -508,9 +508,9 @@ public class DashController : MonoBehaviour
         tempVal.text = temp.ToString();
         if (speedstate > 0)
         {
-            HourLength = 10;
+            HourLength = 5;
         }
-        else HourLength = .2f;
+        else HourLength = 3f;
 
     }
 
