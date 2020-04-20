@@ -103,10 +103,12 @@ public class DashController : MonoBehaviour
     public Sprite state5;
     private List<Sprite> states = new List<Sprite>();
     public int state = 0;
-    
+    //shop pos = 43 -5.722e-06 607.7238 398.3781
     // Start is called before the first frame update
     void Start()
     {
+        shop.SetActive(false);
+
         //init <reactor states> list
         states.Add(state0);
         states.Add(state1);
@@ -148,6 +150,18 @@ public class DashController : MonoBehaviour
             fastforwardOn.SetActive(true);
         }
         else fastforwardOn.SetActive(false);
+
+        //shop
+        if (shopping)
+        {
+            shop.SetActive(true);
+            paused = true;
+        }
+        else
+        {
+            shop.SetActive(false);
+            paused = false;
+        }
         rods.text = rodInUse.ToString();
         moneyVal.text = money.ToString();
 
@@ -216,16 +230,7 @@ public class DashController : MonoBehaviour
         if (waterLevel < 0)
             waterLevel = 0;
 
-        if (shopping)
-        {
-            shop.SetActive(true);
-            paused = true;
-        }
-        else
-        {
-            shop.SetActive(false);
-            paused = false;
-        }
+
     }
 
     public void Flush()
@@ -249,12 +254,13 @@ public class DashController : MonoBehaviour
         day += 1;
         KwHTodayVAl.text = dailyPowerUse.ToString();
         updateEvent();
-        shopping = true;
+        if (day>0) shopping = true;
         if (day % 7 == 0)
         {
             News += 1;
             UpdateNews();
         }
+        KwH = 0;
         
     }
 
