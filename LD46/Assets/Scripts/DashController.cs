@@ -502,5 +502,6 @@ public class DashController : MonoBehaviour
     {
         money += Mathf.RoundToInt(priceOfPower * excessStorage * Sell.value);
         excessStorage -= Mathf.RoundToInt(excessStorage * Sell.value);
+        if (excessStorage == 1) excessStorage = 0;
     }
 }
